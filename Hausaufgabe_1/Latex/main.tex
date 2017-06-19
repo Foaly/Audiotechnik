@@ -1,5 +1,5 @@
 \input{header.tex}
-\ihead{\includegraphics[height=8pt]{akt.png}~\includegraphics[height=8pt]{tu.png} Der Karplus-Strong Algorithmus}
+\ihead{\includegraphics[height=8pt]{akt.png}~\includegraphics[height=8pt]{tu.png} Extraktion raumakustischer Parameter}
 \begin{document}
 
 %--------------------------------
@@ -8,16 +8,16 @@
 
 %--------------------------------
 
-%\pagenumbering{Roman}
+\pagenumbering{Roman}
+\renewcommand\thesection{\alph{section})}
 
-%\tableofcontents   
+\tableofcontents   
 
-%\clearpage
+\clearpage
 
 %--------------------------------
 
-%\pagenumbering{arabic}
-%\renewcommand{\thesection}{\alph{}}
+\pagenumbering{arabic}
 
 \include{Aufgabe1}
 
@@ -29,6 +29,6 @@
 
 \bibliography{literatur}
 \listoffigures
-\listoftables
+%\listoftables
 
 \end{document}
