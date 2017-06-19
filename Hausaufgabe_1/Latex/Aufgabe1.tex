@@ -1,7 +1,22 @@
 \chapter{Extraktion raumakustischer Parameter}
-
 \section{Die Nachhallzeit $\mathbf{RT_{60}}$}
 \label{sec:rt60}
+
+Zur Bestimmung der Nachhallzeit der gegebenen Impulsantwort haben wir zunächst mithilfe einer diskretisierten Version der Gleichung für die Schrödermethode (Literaturverweis?) $R[n]$ berechnet. Dazu haben wir in Matlab folgende Gleichung implementiert:
+\begin{align*}
+R[n] = \sum_{i=1}^N h^2[i] + \sum_{i=1}^n h^2[i]
+\end{align*}
+Aus diesem Vektor lässt sich wiederum eine diskretisierte Form der Energy Decay Curve berechnen, welche den auf 0 dB normierten Pegelabfall des Signals  beschreibt:
+\begin{align*}
+EDC_norm[n] = 10 log (\frac{R[n]}{\sum_{i=1}^N h^2[i]})
+\end{align*}
+Um daraus nun einen Wert für die Nachhallzeit T_$60$ zu bestimmen, haben wir T$_{20}$ und T$_{30}$ berechnet. Dabei haben wir zunächst Indexdifferenzen gebildet und diese dann in Zeitwerte umgerechnet.
+Für T$_{20}$ haben wir die Punkte die Pegelabfällen zwischen -5 dB und -25 dB in $EDC_norm[n]$ entsprechen verwendet, für T$_{30}$, die Differenz zwischen den -5 dB und -35 dB Punkten.
+Dieses Vorgehen entspricht der DIN Norm .......? .
+Da lediglich Zeitdifferenzen verwendet werden, stört dabei 
+
+
+
 
 \begin{figure}[H]
     \center
