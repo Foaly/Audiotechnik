@@ -1,5 +1,5 @@
 function [c80] = C80 (signal, fs)
-    s_80 = 80 * fs / 1000;
+    s_80 = 80 * fs / 1000; % 80ms in sample
     
     signal = signal.^2;
     

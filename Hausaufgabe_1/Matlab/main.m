@@ -2,6 +2,15 @@
 
 [x,fs] = audioread('Hausaufgabe_1_Impulsantwort.wav');
 
+% plot signal
+figure;
+plot(abs(x));
+
+% cut signal to the find first peak before maximum
+[max1, maxIndex] = max(abs(x));
+peakIndex = findchangepts(x(1:maxIndex-1), 'Statistic', 'linear');
+x = x(peakIndex:end);
+
 % plot energy decay curve
 figure;
 EDC_norm = EDC(x);
@@ -20,25 +29,18 @@ T30 = T35 - T5;
 T20_old = find(EDC_norm < -20,1)/fs;
 T30_old = find(EDC_norm < -30,1)/fs;
 
-%find first peak before maximum
-%[max1, maxIndex] = max(abs(x));
-%peakIndex = findchangepts(x(1:maxIndex-1), 'Statistic', 'linear');
-%beginOffset = peakIndex/fs;
-
 T60_1 = 2 * T30;
 T60_2 = 3 * T20;
 
-
-figure;
-plot(abs(x));
-
 %% Aufgabe B)
 
+% filter signal with a oktav bandpass
 x_125  = oktavBand(x, 125, fs);
 x_250  = oktavBand(x, 250, fs);
 x_500  = oktavBand(x, 500, fs);
 x_1000 = oktavBand(x, 1000, fs);
 
+% find the reverb times for the filteres signals
 T_125_5  = find(EDC(x_125) < -5,1)/fs;
 T_125_25 = find(EDC(x_125) < -25,1)/fs;
 T_125    = 3*(T_125_25 - T_125_5);
@@ -56,8 +58,8 @@ T_1000_25 = find(EDC(x_1000) < -25,1)/fs;
 T_1000    = 3*(T_1000_25 - T_1000_5);
 
 
+% calculate bass ratio
 BR = (T_125 + T_250) / (T_500 + T_1000);
-
 
 %% Aufgabe C)
 
