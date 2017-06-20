@@ -79,3 +79,5 @@ C80_1000 = C80(x_1000, fs);
 %% Aufgabe D)
 
 [x2,x2_fs] = audioread('Hausaufgabe_1_Impulsantwort_binaural.wav');
+
+IACC_early = IACC(x2, x2_fs, 0, 80);
