@@ -4,7 +4,10 @@
 
 % plot signal
 figure;
-plot(abs(x));
+plot(x);
+xlabel('Samples');
+ylabel('Amplitude');
+print -depsc samples
 
 % cut signal to the find first peak before maximum
 [max1, maxIndex] = max(abs(x));
@@ -12,9 +15,13 @@ peakIndex = findchangepts(x(1:maxIndex-1), 'Statistic', 'linear');
 x = x(peakIndex:end);
 
 % plot energy decay curve
-figure;
 EDC_norm = EDC(x);
+figure;
 plot(EDC_norm);
+xlabel('Samples');
+ylabel('dB');
+print -depsc EDC_norm
+
 
 
 % find T20 & T30 time point
@@ -46,7 +53,7 @@ T_125_25 = find(EDC(x_125) < -25,1)/fs;
 T_125    = 3*(T_125_25 - T_125_5);
 
 T_250_5  = find(EDC(x_250) < -5,1)/fs;
-T_250_25 = find(EDC(x_250) < -25,1)/fs;
+T_250_25 = find(EDC(/home/anyere/samples.epsx_250) < -25,1)/fs;
 T_250    = 3*(T_250_25 - T_250_5);
 
 T_500_5  = find(EDC(x_500) < -5,1)/fs;
@@ -67,3 +74,8 @@ C80_125  = C80(x_125, fs);
 C80_250  = C80(x_250, fs);
 C80_500  = C80(x_500, fs);
 C80_1000 = C80(x_1000, fs);
+
+
+%% Aufgabe D)
+
+[x2,x2_fs] = audioread('Hausaufgabe_1_Impulsantwort_binaural.wav');
