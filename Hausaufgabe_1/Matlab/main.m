@@ -98,6 +98,7 @@ IACC_late_250  = IACC(x2_250, x2_fs, 80, 1000);
 IACC_late_500  = IACC(x2_500, x2_fs, 80, 1000);
 IACC_late_1000 = IACC(x2_1000, x2_fs, 80, 1000);
 
+
 %% Aufgabe E)
 
 V = 7 * 4 * 4;
@@ -105,3 +106,19 @@ S = (7 * 4 * 2 + 4 * 4) * 2;
 ts = [T_125; T_250; T_500; T_1000];
 as = Sabine(V, ts, S);
 a_mean = mean(as);
+
+
+%% Aufgabe F)
+% siehe din-18041 s.41
+
+T_musik = 0.45 * log10(V) + 0.07;
+T_sprache = 0.37 * log10(V) - 0.14;
+T_unterricht = 0.32 * log10(V) - 0.17;
+
+
+%% Aufgabe G)
+% siehe Möser s.76
+    
+p = [4 2 0];
+lw = 85;
+
