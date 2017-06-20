@@ -80,4 +80,20 @@ C80_1000 = C80(x_1000, fs);
 
 [x2,x2_fs] = audioread('Hausaufgabe_1_Impulsantwort_binaural.wav');
 
-IACC_early = IACC(x2, x2_fs, 0, 80);
+% filter second signal with a oktav bandpass
+x2_125  = oktavBand(x2, 125, fs);
+x2_250  = oktavBand(x2, 250, fs);
+x2_500  = oktavBand(x2, 500, fs);
+x2_1000 = oktavBand(x2, 1000, fs);
+
+% IACC early for each band
+IACC_early_125  = IACC(x2_125, x2_fs, 0, 80);
+IACC_early_250  = IACC(x2_250, x2_fs, 0, 80);
+IACC_early_500  = IACC(x2_500, x2_fs, 0, 80);
+IACC_early_1000 = IACC(x2_1000, x2_fs, 0, 80);
+
+% IACC late for each band
+IACC_late_125  = IACC(x2_125, x2_fs, 80, 1000);
+IACC_late_250  = IACC(x2_250, x2_fs, 80, 1000);
+IACC_late_500  = IACC(x2_500, x2_fs, 80, 1000);
+IACC_late_1000 = IACC(x2_1000, x2_fs, 80, 1000);
