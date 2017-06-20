@@ -81,10 +81,10 @@ C80_1000 = C80(x_1000, fs);
 [x2,x2_fs] = audioread('Hausaufgabe_1_Impulsantwort_binaural.wav');
 
 % filter second signal with a oktav bandpass
-x2_125  = oktavBand(x2, 125, x2_fs);
-x2_250  = oktavBand(x2, 250, x2_fs);
-x2_500  = oktavBand(x2, 500, x2_fs);
-x2_1000 = oktavBand(x2, 1000, x2_fs);
+x2_125  = oktavBand(x2, 125, x2_fs  );
+x2_250  = oktavBand(x2, 250, x2_fs  );
+x2_500  = oktavBand(x2, 500, x2_fs  );
+x2_1000 = oktavBand(x2, 1000, x2_fs );
 
 % IACC early for each band
 IACC_early_125  = IACC(x2_125, x2_fs, 0, 80);
@@ -97,3 +97,11 @@ IACC_late_125  = IACC(x2_125, x2_fs, 80, 1000);
 IACC_late_250  = IACC(x2_250, x2_fs, 80, 1000);
 IACC_late_500  = IACC(x2_500, x2_fs, 80, 1000);
 IACC_late_1000 = IACC(x2_1000, x2_fs, 80, 1000);
+
+%% Aufgabe E)
+
+V = 7 * 4 * 4;
+S = (7 * 4 * 2 + 4 * 4) * 2;
+ts = [T_125; T_250; T_500; T_1000];
+as = Sabine(V, ts, S);
+a_mean = mean(as);

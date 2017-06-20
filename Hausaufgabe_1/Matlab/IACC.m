@@ -17,7 +17,7 @@ rms = sqrt(sum(l.^2) * sum(r.^2));
 r_pad = [zeros(s1ms,1); r; zeros(s1ms,1)]
 
 for t = 1:(2*s1ms)
-    p = sum(l.*r_pad(t:t+len))
+    p = sum(l.*r_pad(t+1:t+len-1))
     IACF(t) = p / rms;
 end
 
