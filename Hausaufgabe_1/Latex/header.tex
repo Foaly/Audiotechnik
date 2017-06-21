@@ -21,14 +21,14 @@
 
 \usepackage[onehalfspacing]{setspace}
 
-\usepackage[automark, headsepline,footsepline]{scrlayer-scrpage}
+\usepackage[automark, headsepline, footsepline]{scrlayer-scrpage}
 \clearpairofpagestyles
 \pagestyle{scrheadings}
 % zeige Header & Footer auch auf Kapitelseiten
 \renewcommand*\chapterpagestyle{scrheadings}
 
 \automark{section}
-\ohead{\headmark}
+\ohead{\parbox[t]{0.55\textwidth}{\raggedleft\headmark}}
 \ofoot*{\pagemark}
 
 \usepackage{enumerate}
