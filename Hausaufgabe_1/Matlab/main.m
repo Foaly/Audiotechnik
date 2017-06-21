@@ -2,17 +2,17 @@
 
 [x,fs] = audioread('Hausaufgabe_1_Impulsantwort.wav');
 
+% cut signal to the first peak before absolute maximum
+[max1, maxIndex] = max(abs(x));
+peakIndex = findchangepts(x(1:maxIndex-1), 'Statistic', 'linear');
+x = x(peakIndex:end);
+
 % plot signal
 figure;
 plot(x);
 xlabel('Samples');
 ylabel('Amplitude');
 print -depsc samples
-
-% cut signal to the find first peak before maximum
-[max1, maxIndex] = max(abs(x));
-peakIndex = findchangepts(x(1:maxIndex-1), 'Statistic', 'linear');
-x = x(peakIndex:end);
 
 % plot energy decay curve
 EDC_norm = EDC(x);
