@@ -201,17 +201,18 @@ Aus Tabelle \ref{tab:Tsoll} können wir entnehmen, dass die frequenzabhängigen 
 \section{Die Schalldruckpegelverteilung}
 \label{sec:sdpv}
 
-Nun stellen wir uns den Raum mit den Abmessungen 7 m x 4m x 4m in einem dreidimensionalen Koordinatensystem vor. Wir platzieren eine Schallquelle am Boden des Raumes am Punkt P(4|2|0), welche einen Schallleistungspegel von $L_W$ = 85 dB besitzt. Die Quelle mit halbkugelförmiger Charakteristik in den Raum hin. Für diesen Fall finden wir in Möser (Lit.verweis!) folgende Formel für den Direktschall, den die Quelle im Abstand r im Raum erzeugt: 
+Nun stellen wir uns den Raum mit den Abmessungen 7m x 4m x 4m in einem dreidimensionalen Koordinatensystem vor. Wir platzieren eine Schallquelle am Boden des Raumes am Punkt P(4|2|0), welche einen Schallleistungspegel von $L_W$ = 85 dB besitzt. Die Quelle mit halbkugelförmiger Charakteristik in den Raum hin. Für diesen Fall finden wir in Möser \cite{Moeser15} folgende Formel für den Direktschall, den die Quelle im Abstand $r$ im Raum erzeugt: 
 \begin{align*}
-L_{P,\mathrm{direkt}}(r) = L_W - 20\,\mathrm{log}_{10} \left( \frac{r}{\mathrm{m}}\right) - 8 \mathrm{dB}
+L_{P, \mathrm{direkt}}(r) = L_W - 20\,\mathrm{log}_{10} \left( \frac{r}{\mathrm{m}}\right) - 8 \mathrm{dB}
 \end{align*} 
+
 Desweiteren wird bei stationärem Betrieb der Quelle ein diffuses Schallfeld erzeugt, welches im selben Buch durch folgende Formel beschrieben wird: 
 \begin{align*}
-L_{P,\mathrm{diffus}} = L_W - 10\,\mathrm{log}_{10} \left( \frac{A}{\mathrm{m}^2}\right) +6 \mathrm{dB}
+L_{P, \mathrm{diffus}} = L_W - 10\,\mathrm{log}_{10} \left( \frac{A}{\mathrm{m}^2}\right) +6 \mathrm{dB}
 \end{align*} 
 
 Das resultierende Schallfeld ergibt sich aus der Überlagerung von Direkt- und Diffusschall und berechnet sich folgendermaßen:
 
 \begin{align*}
-L_{P,\mathrm{gesamt}}(r) = 10\,\mathrm{log}_{10}\left(10^{\frac{L_{P,\mathrm{direkt}}(r)}{10}}+ 10^{\frac{L_{P,\mathrm{diffus}}}{10}}\right)
+L_{P, \mathrm{gesamt}}(r) = 10\,\mathrm{log}_{10}\left(10^{\frac{L_{P,\mathrm{direkt}}(r)}{10}}+ 10^{\frac{L_{P,\mathrm{diffus}}}{10}}\right)
 \end{align*} 
