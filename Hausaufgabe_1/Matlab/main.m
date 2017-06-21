@@ -102,7 +102,7 @@ IACC_late_1000 = IACC(x2_1000, x2_fs, 80, 1000);
 %% Aufgabe E)
 
 V = 7 * 4 * 4;
-S = (7 * 4 * 2 + 4 * 4) * 2;
+S = 7 * 4 * 4 + 4 * 4 * 2;
 ts = [T_125; T_250; T_500; T_1000];
 as = Sabine(V, ts, S);
 
@@ -129,7 +129,7 @@ Z = 0:res:4;
 L_ges = zeros(length(X), length(Y), length(Z));
 
 for xi = 1:length(X)
-    for yi = 1:length(Y)
+    for yi = 1:length(Y)    
         for zi = 1:length(Z)
             p2 = [X(xi) Y(yi) Z(zi)];
             dist = pdist([p; p2], 'euclidean');

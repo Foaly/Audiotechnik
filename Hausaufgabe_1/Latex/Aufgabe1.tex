@@ -1,9 +1,10 @@
 \chapter{Extraktion raumakustischer Parameter}
 \section{Die Nachhallzeit $\mathbf{RT_{60}}$}
-\label{sec:rt60}Wir analysieren die Impulsantwort des Raumes HFT616 der TU Berlin.
+\label{sec:rt60}
+Wir analysieren die Impulsantwort des Raumes HFT616 der TU Berlin.
 Das Signal hat eine Abtastrate von $f_s$ = 44100 Hz und enthält am Anfang einen Bereich mit Grundrauschen bevor die eigentliche Impulsantwort beginnt.
 Als erstes entfernen wir diesen Teil des Signals.
-Als Kriterium zur Bestimmung des zeitlichen Nullpunkts der Impulsantwort verwenden die Position des ersten lokalen Maximums vor dem absoluten Maximum .
+Als Kriterium zur Bestimmung des zeitlichen Nullpunkts der Impulsantwort verwenden die Position des ersten lokalen Maximums vor dem absoluten Maximum.
 Zur Bestimmung der Nachhallzeit der gegebenen Impulsantwort haben wir die Schroeder Methode \cite{Schroeder65} verwendet.
 Dazu haben wir in Matlab folgende Gleichung implementiert:
 
@@ -50,7 +51,7 @@ Die Ergebnisse für die Nachhallzeit sind in Tabelle \ref{tab:T} dargestellt.
 \section{Das Bassverhältnis $\mathbf{BR}$}
 \label{sec:br}
 Um das Bassverhältnis zu bestimmen ermitteln wir die Nachhallzeiten in verschiedenen Frequenzbereichen. Dazu filtern wir die Impulsantwort in Oktavbändern.
-Wir generieren also vier neue Signale mittels Butterworth-Filtern dritter Ordnung mit Mittenfrequenzen bei 125 Hz, 250 Hz, 500 Hz und 1000 Hz. Auf diese wenden wir dieselbe Routine, wie in Aufgabe A) an, beschränken uns aber auf die Berechnung mittels $T_{20}$, um daraus die Nachhallzeiten $T_{60}$ zu erhalten:
+Wir generieren also vier neue Signale mittels Butterworth-Filtern dritter Ordnung mit Mittenfrequenzen bei 125 Hz, 250 Hz, 500 Hz und 1000 Hz. Auf diese wenden wir dieselbe Routine, wie in Aufgabe \ref{sec:rt60} an, beschränken uns aber auf die Berechnung mittels $T_{20}$, um daraus die Nachhallzeiten $T_{60}$ zu erhalten:
 \begin{table}[H]
 \centering
 \caption{Nachhallzeiten für Oktavbänder}
@@ -76,7 +77,7 @@ Für Sprache hingegen sollte der Wert unterhalb von 1.0 liegen.
 
 \section{Das Klarheitsmaß $\mathbf{C_{80}}$}
 \label{sec:c80}
-Für dieselben oktavbandgefilterten Signale, wie in Aufgabenteil B) können wir nun das Klarheitsmaß $C_{80}$ für die vier Frequenzbänder bestimmen.
+Für dieselben oktavbandgefilterten Signale, wie in Aufgabenteil \ref{sec:br} können wir nun das Klarheitsmaß $C_{80}$ für die vier Frequenzbänder bestimmen.
 Dieses kann durch folgende wiederum diskretisierte Formel berechnet werden
 \begin{align*}
 C_{80} = 10\cdot \mathrm{log}_{10}\left(\frac{ \sum_{i=1}^{n_{80}} h^2[i]}{\sum_{i=n_{80}}^N h^2[i]}\right)
@@ -101,8 +102,9 @@ Als Ergebnisse erhalten wir folgende Werte:
   \end{tabular}
 \end{table}
 
-Die im Handbuch der Audiotechnik (Lit.verweis!) zitierte Arbeit von Abdel Alim besagt, dass für klassische bzw. romantische Musik, das Klarheitsmaß $C_{80}$ größer als -1,6 dB bzw. -4,6 dB sein sollte.
-Demnach wäre der Raum HFT616 für diese beiden Arten musikalischer Darbietungen bezüglich zeitlicher Klarheit geeignet.\\
+Die im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 199) zitierte Arbeit von Abdel Alim besagt, dass für klassische bzw. romantische Musik, das Klarheitsmaß $C_{80}$ größer als -1,6 dB bzw. -4,6 dB respektive sein sollte.
+Demnach wäre der Raum HFT616 für diese beiden Arten musikalischer Darbietungen bezüglich zeitlicher Klarheit geeignet.
+\\
 Für das Verständnis von Sprache ist es wichtig einen hohen $C_{80}$ Wert im für Sprache wichtigen Frequenzbereich zu haben.
 Der mittlere Grundton einer männlichen Stimme liegt bei etwa 125 Hz, der einer weiblichen bei 250 Hz.
 Demnach würde man im analysierten Raum beide Geschlechter deutlich verstehen, eine Frau allerdings noch deutlicher, als einen Mann.
@@ -114,12 +116,12 @@ Der interaurale Kreuzkorrelationskoeffizient gibt Auskunft über zeitliche Unter
 Für die Berechnung dieses Maßes benötigen wir eine binaurale Impulsantwort, also ein an zwei verschiedenen Stellen im Abstand der menschlichen Ohren aufgenommenes Signal. 
 Es wird berechnet, bei welchen Zeitdifferenzen $\tau$ die beiden Signale für linkes und rechtes Ohr maximal korrelieren.
 Dabei werden lediglich $\tau$-Werte aus dem Bereich zwischen -1 ms und 1 ms betrachtet, was den Bereich einschließt, den Schall braucht um vom einen zum anderen Ohr zu gelangen.  
-Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 200) empfohlen, verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten den Bereich zwischen 80 ms und 1000 ms. 
+Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 200) empfohlen, verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten das Intervall zwischen $t_1$ = 80 ms und $t_2$ = 1000 ms. 
 Die in Matlab implementierte diskretisierte Gleichung lautet:
 \begin{align*}
 IACC = \mathrm{max}\left( \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }})\right) 
 \end{align*}
-Hierbei gilt $n_1 = t_1 \cdot f_s$,  $n_2 = t_2 \cdot f_s$ sowie $\Delta n = \tau \cdot f_s$.
+Hierbei gilt $n_1 = t_1 \cdot f_s$ und  $n_2 = t_2 \cdot f_s$ sowie $\Delta n = \tau \cdot f_s$.
 Wir haben die Koeffizienten abermals für die vier Oktavbänder berechnet.
 Die Ergebnisse sind in folgender Tabelle aufgelistet:
 \begin{table}[H]
@@ -138,17 +140,20 @@ Die Ergebnisse sind in folgender Tabelle aufgelistet:
     \end{tabular}
 \end{table}
 
-\section{Der Absorptionsgrad $\mathbf{\alpha}$ der Wandfläche}
+\section{Der Absorptionsgrad \boldmath$\alpha$ der Wandfläche}
 \label{sec:alpha}
-Mithilfe der Sabine'schen Formel lässt sich unter Kenntnis der Nachhallzeit sowie den Raumabmessungen der durschnittliche Absorptionsgrad der Wandflächen eines Raumes berechnen. 
+Mithilfe der Sabine'schen Formel lässt sich unter Kenntnis der Nachhallzeit sowie den Raumabmessungen der durchschnittliche Absorptionsgrad der Wandflächen eines Raumes berechnen. 
 Dafür stellt man Sabine's Formel nach $\alpha$ um:
 \begin{align*}
 \alpha = 0,163 \frac{V}{S\,T_{60}}
 \end{align*}
-Um die durschnittlichen Absorptionsgrade in bestimmten Frequenzbändern zu erhalten, verwenden wir wieder die mittels der oktavbandgefilterten Signale bestimmten Nachhallzeiten. Wir erhalten folgende Ergebnisse:
+Das Raumvolumen $V$ ergibt sich aus den Dimensionen des Raumes $7m \cdot 4m \cdot 4m = 112m^3$.
+Die Fläche der Seitenwände $S = 144m^2$ wird ebenfalls aus den Raumdimensionen errechnet.
+Um die durchschnittlichen Absorptionsgrade in bestimmten Frequenzbändern zu erhalten, verwenden wir wieder die mittels der oktavbandgefilterten Signale bestimmten Nachhallzeiten aus Tabelle \ref{tab:T_band}.
+Wir erhalten folgende Ergebnisse:
 \begin{table}[H]
     \centering
-    \caption{Durschnittlicher Absorptionsgrad $\alpha$ für Oktavbänder}
+    \caption{Durchschnittlicher Absorptionsgrad $\alpha$ für Oktavbänder}
     \label{tab:alpha}
     \begin{tabular}[\textwidth]{|c|c|}
     \hline
@@ -166,7 +171,7 @@ Um die durschnittlichen Absorptionsgrade in bestimmten Frequenzbändern zu erhal
 \section{Vergleich der Nachhallzeiten}
 \label{sec:ts}
 Die DIN 18041 \cite{DIN_18041} enthält Richtlinien für die Hörsamkeit von kleinen bis mittelgroßen Räumen. 
-Wir finden dort Sollwerte für die Nachhhallzeit $T_{60}$, die eine gute Hörsamkeit garantieren, wenn Räume für Musik, Sprache oder Unterricht genutzt werden.
+Wir finden dort Sollwerte für die Nachhallzeit $T_{60}$, die eine gute Hörsamkeit garantieren, wenn Räume für Musik, Sprache oder Unterricht genutzt werden.
 Mithilfe der in der DIN-Norm angegebenen Formeln lassen sich diese Werte für den Raum HFT616 berechnen:
 \begin{align*}
 T_{\mathrm{soll}} &= 0,45\, \mathrm{log}_{10} (V)+0,07 = 0,99 s & \mathrm{(Musik)}\\
