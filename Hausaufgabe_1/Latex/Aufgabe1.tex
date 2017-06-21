@@ -82,6 +82,8 @@ Dieses kann durch folgende wiederum diskretisierte Formel berechnet werden
 C_{80} = 10\cdot \mathrm{log}_{10}\left(\frac{ \sum_{i=1}^{n_{80}} h^2[i]}{\sum_{i=n_{80}}^N h^2[i]}\right)
 \end{align*}
 wobei $n_{80} = 0,08 \mathrm{s} \cdot f_s$ gilt. \\
+Dieses Klarheitsmaß liefert uns den Anteil an Schallenergie des Impulses, der bereits innerhalb der ersten 80 ms beim Empfänger ankommt.
+Ist dieser groß, so ist die zeitliche Durchsichtigkeit ebenfalls groß, da nacheinander gesendete Schallinformationen zeitlich wenig Überlappung am Ort des Empfängers aufweisen.
 Als Ergebnisse erhalten wir folgende Werte:
 \begin{table}[H]
 \centering
@@ -99,7 +101,11 @@ Als Ergebnisse erhalten wir folgende Werte:
   \end{tabular}
 \end{table}
 
-Interpretation der Werte????
+Die im Handbuch der Audiotechnik (Lit.verweis!) zitierte Arbeit von Abdel Alim besagt, dass für klassische bzw. romantische Musik, das Klarheitsmaß $C_{80}$ größer als -1,6 dB bzw. -4,6 dB sein sollte.
+Demnach wäre der Raum HFT616 für diese beiden Arten musikalischer Darbietungen bezüglich zeitlicher Klarheit geeignet.\\
+Für das Verständnis von Sprache ist es wichtig einen hohen $C_{80}$ Wert im für Sprache wichtigen Frequenzbereich zu haben.
+Der mittlere Grundton einer männlichen Stimme liegt bei etwa 125 Hz, der einer weiblichen bei 250 Hz.
+Demnach würde man im analysierten Raum beide Geschlechter deutlich verstehen, eine Frau allerdings noch deutlicher, als einen Mann.
 
 \section{Der interaurale Kreuzkorrelationkoeffizient $\mathbf{IACC}$}
 \label{sec:iacc}
@@ -189,3 +195,5 @@ Der DIN 18041 können wir ebenfalls die anzustrebenden Bereiche der Nachhallzeit
 
 \section{Die Schalldruckpegelverteilung}
 \label{sec:sdpv}
+
+Nun stellen wir uns den Raum mit den Abmessungen 7 m x 4m x 4m in einem dreidimensionalen Koordinatensystem vor. Wir platzieren eine Schallquelle am Boden des Raumes am Punkt P(4|2|0), welche einen Schalleistungspegel von 85 dB besitzt. Die Quelle mit halbkugelförmiger Charakteristik in den Raum hin, wofü
