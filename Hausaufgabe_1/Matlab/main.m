@@ -105,27 +105,37 @@ V = 7 * 4 * 4;
 S = (7 * 4 * 2 + 4 * 4) * 2;
 ts = [T_125; T_250; T_500; T_1000];
 as = Sabine(V, ts, S);
-a_mean = mean(as);
 
 
 %% Aufgabe F)
 % siehe DIN-18041 s.41
 
-T_musik = 0.45 * log10(V) + 0.07;
-T_sprache = 0.37 * log10(V) - 0.14;
-T_unterricht = 0.32 * log10(V) - 0.17;
+T_soll_musik = 0.45 * log10(V) + 0.07;
+T_soll_sprache = 0.37 * log10(V) - 0.14;
+T_soll_unterricht = 0.32 * log10(V) - 0.17;
 
 
 %% Aufgabe G)
 % siehe Möser s.76
 
-p = [4 2 0];
 lw = 85;
+p = [4 2 0];
+A = S * Sabine(V, T60_1, S);
 
-res = 0.2;
-[X, Y] = meshgrid(0:res:4, 0:res:7);
+res = 1/2;
+X = 0:res:7;
+Y = 0:res:4;
+Z = 0:res:4;
 
-figure;
-surf(X, Y);
-view(3);
+for xi = 1:length(X)
+    for yi = 1:length(Y)
+        for zi = 1:length(Z)
+            p2 = [X(xi) Y(yi) Z(zi)];
+            dist = pdist([p; p2], 'euclidean');
 
+            l_dir = lw - 20 * log(dist) - 8;
+            l_dif = l_dir - 10 * log(A) + 6;
+            l_ges = 10 * log10(10^(l_dir/10) + 10^(l_dif/10));
+        end
+    end
+end
