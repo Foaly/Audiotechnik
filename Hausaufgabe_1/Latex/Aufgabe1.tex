@@ -13,11 +13,11 @@ R[n] = \sum_{i=1}^N h^2[i] + \sum_{i=1}^n h^2[i]
 \end{align*}
 Aus diesem Vektor lässt sich wiederum eine diskretisierte Form der Energy Decay Curve berechnen, welche den auf 0 dB normierten Pegelabfall des Signals  beschreibt:
 \begin{align*}
-EDC_{norm}[n] = 10 \cdot \mathrm{log}_{10} \left(\frac{R[n]}{\sum_{i=1}^N h^2[i]}\right)
+EDC_{\mathrm{norm}}[n] = 10 \cdot \mathrm{log}_{10} \left(\frac{R[n]}{\sum_{i=1}^N h^2[i]}\right)
 \end{align*}
 Um daraus nun einen Wert für die Nachhallzeit T$_{60}$ zu bestimmen, haben wir T$_{20}$ und T$_{30}$ berechnet.
 Dabei haben wir zunächst Indexdifferenzen gebildet und diese dann in Zeitwerte umgerechnet.
-Für T$_{20}$ haben wir die Punkte die Pegelabfällen zwischen -5 dB und -25 dB in $EDC_{norm}[n]$ entsprechen verwendet, für T$_{30}$, die Differenz zwischen den -5 dB und -35 dB Punkten.
+Für T$_{20}$ haben wir die Punkte die Pegelabfällen zwischen -5 dB und -25 dB in $EDC_{\mathrm{norm}}[n]$ entsprechen verwendet, für T$_{30}$, die Differenz zwischen den -5 dB und -35 dB Punkten.
 Dieses Vorgehen entspricht der DIN Norm 18041 \cite{DIN_18041}.
 Die Ergebnisse für die Nachhallzeit sind in Tabelle \ref{tab:T} dargestellt.
 
@@ -120,7 +120,7 @@ Dabei werden lediglich $\tau$-Werte aus dem Bereich zwischen -1 ms und 1 ms betr
 Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 200) empfohlen, verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten das Intervall zwischen $t_1$ = 80 ms und $t_2$ = 1000 ms. 
 Die in Matlab implementierte diskretisierte Gleichung lautet:
 \begin{align*}
-IACC = \mathrm{max}\left( \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }}\right) 
+IACC = \mathrm{max}\left( \left| \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }}\right |\right) 
 \end{align*}
 Hierbei gilt $n_1 = t_1 \cdot f_s$ und  $n_2 = t_2 \cdot f_s$ sowie $\Delta n = \tau \cdot f_s$.
 Wir haben die Koeffizienten abermals für die vier Oktavbänder berechnet.
@@ -131,7 +131,7 @@ Die Ergebnisse sind in folgender Tabelle aufgelistet:
     \label{tab:iacc}
     \begin{tabular}[\textwidth]{|c|c|c|}
     \hline
-        Frequenzband & $IACC_{Early}$ &$IACC_{Late}$ \\
+        Frequenzband & $IACC_{\mathrm{early}}$ &$IACC_{\mathrm{late}}$ \\
         \hline
         125 Hz & 0.99 s & 0.94 s \\
         250 Hz & 0.90 s & 0.79 s \\
@@ -140,6 +140,14 @@ Die Ergebnisse sind in folgender Tabelle aufgelistet:
         \hline
     \end{tabular}
 \end{table}
+Aus $IACC_{\mathrm{early}}$ lässt sich ein Maß für die subjektive Wahrnehmung der Schallquellenbreite ableiten.
+Dafür dreht man die Skalierung um schaut sich stattdessen $1-IACC_{\mathrm{early}}$ an. 
+In unserem Fall werden also z.B. Schallquellen mit dominanten Frequenzen um 500 Hz als breit wahrgenommen und Schallquellen mit dominanten Frequenzen um 125 Hz als schmal. \\
+Aus $IACC_{\mathrm{late}}$ lässt sich hingegen ein Maß für die subjektive Empfindung des vom-Schall eingehüllt-sein ableiten.
+Dafür dreht man wiederum auf selbe Weise die Skalierung und betrachtet $1-IACC_{\mathrm{late}}$.
+In unserem Fall fühlt man sich also von Schallquellen mit dominanten Frequenzen um 500 Hz ausgehendem Schall stärker eingehüllt, als von 
+Schallquellen mit dominanten Frequenzen um 125 Hz ausgehendem Schall.
+
 
 \section{Der Absorptionsgrad \boldmath$\alpha$ der Wandfläche}
 \label{sec:alpha}
@@ -218,24 +226,29 @@ Das resultierende Schallfeld ergibt sich aus der Überlagerung von Direkt- und D
 L_{P, \mathrm{gesamt}}(r) = 10\,\mathrm{log}_{10}\left(10^{\frac{L_{P,\mathrm{direkt}}(r)}{10}}+ 10^{\frac{L_{P,\mathrm{diffus}}}{10}}\right)
 \end{align*} 
 
+In den Abbildungen \ref{fig:Schalldruckverteilung}, \ref{fig:Schalldruckverteilung2} und \ref{fig:Schalldruckverteilung3} sind die Schalldruckverteilungen am Boden, auf halber Höhe des Raumes und der Decke zu sehen.
+Man erkennt, dass sich die Schalldruckverteilung mit zunehmender Höhe der des diffusen Schallfeldes annähert und der Direktschall an Einfluss verliert.
 
 \begin{figure}[H]
     \center
     \includegraphics[width = 0.7\textwidth]{figures/Schalldruckverteilung}
-    \caption{Die Schalldruckverteilung}
+    \caption{Schalldruckverteilung am Boden des Raumes}
     \label{fig:Schalldruckverteilung}
 \end{figure}
 
 \begin{figure}[H]
     \center
     \includegraphics[width = 0.7\textwidth]{figures/Schalldruckverteilung2}
-    \caption{Die Schalldruckverteilung2}
+    \caption{Schalldruckverteilung auf halber Höhe des Raumes}
     \label{fig:Schalldruckverteilung2}
 \end{figure}
 
 \begin{figure}[H]
     \center
     \includegraphics[width = 0.7\textwidth]{figures/Schalldruckverteilung3}
-    \caption{Die Schalldruckverteilung3}
+    \caption{Schalldruckverteilung an der Decke des Raumes}
     \label{fig:Schalldruckverteilung3}
 \end{figure}
+
+
+
