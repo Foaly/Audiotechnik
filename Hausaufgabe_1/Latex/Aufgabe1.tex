@@ -119,7 +119,7 @@ Dabei werden lediglich $\tau$-Werte aus dem Bereich zwischen -1 ms und 1 ms betr
 Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 200) empfohlen, verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten das Intervall zwischen $t_1$ = 80 ms und $t_2$ = 1000 ms. 
 Die in Matlab implementierte diskretisierte Gleichung lautet:
 \begin{align*}
-IACC = \mathrm{max}\left( \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }})\right) 
+IACC = \mathrm{max}\left( \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }}\right) 
 \end{align*}
 Hierbei gilt $n_1 = t_1 \cdot f_s$ und  $n_2 = t_2 \cdot f_s$ sowie $\Delta n = \tau \cdot f_s$.
 Wir haben die Koeffizienten abermals für die vier Oktavbänder berechnet.
