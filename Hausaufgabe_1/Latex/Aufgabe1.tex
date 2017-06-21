@@ -173,7 +173,7 @@ T_{\mathrm{soll}} &= 0,45\, \mathrm{log}_{10} (V)+0,07 = 0,99 s & \mathrm{(Musik
 T_{\mathrm{soll}} &= 0,37\, \mathrm{log}_{10} (V)-0,14 = 0,62 s & \mathrm{(Sprache)} \\
 T_{\mathrm{soll}} &= 0,32\, \mathrm{log}_{10} (V)-0,17 = 0,49 s& \mathrm{(Unterricht)}
 \end{align*}
-Wir stellen zunächst fest, dass unsere Werte für T$_60$ (vgl. Tabelle \ref{tab:T}) zwischen den Sollwerten für Musik und Sprache liegen. 
+Wir stellen zunächst fest, dass unsere Werte für T$_{60}$ (vgl. Tabelle \ref{tab:T}) zwischen den Sollwerten für Musik und Sprache liegen. 
 Der DIN 18041 können wir ebenfalls die anzustrebenden Bereiche der Nachhallzeit in Abhängigkeit der Frequenz (für Musik und Sprache) entnehmen. Diese lauten wie folgt:
 \begin{table}[H]
     \centering
@@ -191,9 +191,22 @@ Der DIN 18041 können wir ebenfalls die anzustrebenden Bereiche der Nachhallzeit
         \hline
     \end{tabular}
 \end{table}
-
+Aus Tabelle \ref{tab:Tsoll} können wir entnehmen, dass die frequenzabhängigen Nachhallzeiten des Raumes HFT616 tendenziell außerhalb des Sollbereichs für Musik, aber innerhalb des Sollbereichs für Sprache liegen. Eine Ausnahme bildet der Frequenzbereich um 125 Hz, bei dem die Nachhallzeit im Sollbereich für Musik, aber außerhalb dessen für Sprache liegt. 
 
 \section{Die Schalldruckpegelverteilung}
 \label{sec:sdpv}
 
-Nun stellen wir uns den Raum mit den Abmessungen 7 m x 4m x 4m in einem dreidimensionalen Koordinatensystem vor. Wir platzieren eine Schallquelle am Boden des Raumes am Punkt P(4|2|0), welche einen Schalleistungspegel von 85 dB besitzt. Die Quelle mit halbkugelförmiger Charakteristik in den Raum hin, wofü
+Nun stellen wir uns den Raum mit den Abmessungen 7 m x 4m x 4m in einem dreidimensionalen Koordinatensystem vor. Wir platzieren eine Schallquelle am Boden des Raumes am Punkt P(4|2|0), welche einen Schalleistungspegel von $L_W$ = 85 dB besitzt. Die Quelle mit halbkugelförmiger Charakteristik in den Raum hin. Für diesen Fall finden wir in Möser (Lit.verweis!) folgende Formel für den Direktschall, den die Quelle im Abstand r im Raum erzeugt: 
+\begin{align*}
+L_{P,\mathrm{direkt}}(r) = L_W - 20\,\mathrm{log}_{10} ( \frac{r}{\mathrm{m}}) - 8 \mathrm{dB}
+\end{align*} 
+Desweiteren wird bei stationärem Betrieb der Quelle ein diffuses Schallfeld erzeugt, welches im selben Buch durch folgende Formel beschrieben wird: 
+\begin{align*}
+L_{P,\mathrm{diffus}} = L_W - 10\,\mathrm{log}_{10} ( \frac{A}{\mathrm{m}^2}) +6 \mathrm{dB}
+\end{align*} 
+
+Das resultierende Schallfeld ergibt sich aus der Überlagerung von Direkt- und Diffusschall und berechnet sich folgendermaßen:
+
+\begin{align*}
+L_{P,\mathrm{gesamt}}(r) = 10\,\mathrm{log}_{10}(10^{\frac{L_{P,\mathrm{direkt}}(r)}{10}}+ 10^{\frac{L_{P,\mathrm{diffus}}}{10}})
+\end{align*} 
