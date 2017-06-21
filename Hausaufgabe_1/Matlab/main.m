@@ -53,7 +53,7 @@ T_125_25 = find(EDC(x_125) < -25,1)/fs;
 T_125    = 3*(T_125_25 - T_125_5);
 
 T_250_5  = find(EDC(x_250) < -5,1)/fs;
-T_250_25 = find(EDC(/home/anyere/samples.epsx_250) < -25,1)/fs;
+T_250_25 = find(EDC(x_250) < -25,1)/fs;
 T_250    = 3*(T_250_25 - T_250_5);
 
 T_500_5  = find(EDC(x_500) < -5,1)/fs;
@@ -118,7 +118,14 @@ T_unterricht = 0.32 * log10(V) - 0.17;
 
 %% Aufgabe G)
 % siehe Möser s.76
-    
+
 p = [4 2 0];
 lw = 85;
+
+res = 0.2;
+[X, Y] = meshgrid(0:res:4, 0:res:7);
+
+figure;
+surf(X, Y);
+view(3);
 
