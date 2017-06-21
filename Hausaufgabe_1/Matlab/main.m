@@ -122,7 +122,7 @@ lw = 85;
 p = [4 2 0];
 A = S * Sabine(V, T60_1, S);
 
-res = 1/5;
+res = 1/15;
 X = 0:res:7;
 Y = 0:res:4;
 Z = 0:res:4;
@@ -141,5 +141,43 @@ for xi = 1:length(X)
         end
     end
 end
+%%
+[Ys,Xs] = meshgrid(Y, X);
+% sound pressure level on the floor
+s1 = surf(Ys,Xs,L_ges(:,:,1))
+s1.EdgeColor = 'none';
+colorbar;
+xlim([0 4]);
+xlabel('Y[m]');
+ylim([0 7]);
+ylabel('X[m]');
+zlim([50 130]);
+zlabel('Schalldruckpegel in dB');
+print -depsc Schalldruckverteilung
 
-imagesc(X,Y,L_ges(:,:,1));
+% sound pressure level in middle z-height
+s2 = surf(Ys,Xs,L_ges(:,:,round(length(Z)/2)))
+s2.EdgeColor = 'none';
+colorbar;
+xlim([0 4]);
+xlabel('Y[m]');
+ylim([0 7]);
+ylabel('X[m]');
+zlim([50 130]);
+zlabel('Schalldruckpegel in dB');
+print -depsc Schalldruckverteilung2
+
+% sound pressure level at the ceiling
+s3 = surf(Ys,Xs,L_ges(:,:,round(length(Z))))
+s3.EdgeColor = 'none';
+colorbar;
+xlim([0 4]);
+xlabel('Y[m]');
+ylim([0 7]);
+ylabel('X[m]');
+zlim([50 130]);
+zlabel('Schalldruckpegel in dB');
+print -depsc Schalldruckverteilung3
+
+
+
