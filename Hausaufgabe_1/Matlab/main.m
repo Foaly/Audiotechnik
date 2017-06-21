@@ -109,7 +109,7 @@ a_mean = mean(as);
 
 
 %% Aufgabe F)
-% siehe din-18041 s.41
+% siehe DIN-18041 s.41
 
 T_musik = 0.45 * log10(V) + 0.07;
 T_sprache = 0.37 * log10(V) - 0.14;
