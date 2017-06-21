@@ -122,10 +122,11 @@ lw = 85;
 p = [4 2 0];
 A = S * Sabine(V, T60_1, S);
 
-res = 1/2;
+res = 1/5;
 X = 0:res:7;
 Y = 0:res:4;
 Z = 0:res:4;
+L_ges = zeros(length(X), length(Y), length(Z));
 
 for xi = 1:length(X)
     for yi = 1:length(Y)
@@ -134,8 +135,11 @@ for xi = 1:length(X)
             dist = pdist([p; p2], 'euclidean');
 
             l_dir = lw - 20 * log(dist) - 8;
-            l_dif = l_dir - 10 * log(A) + 6;
+            l_dif = lw - 10 * log(A) + 6;
             l_ges = 10 * log10(10^(l_dir/10) + 10^(l_dif/10));
+            L_ges(xi, yi, zi) = l_ges;
         end
     end
 end
+
+imagesc(X,Y,L_ges(:,:,1));
