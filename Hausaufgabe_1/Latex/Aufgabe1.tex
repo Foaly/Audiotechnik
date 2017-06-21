@@ -71,7 +71,7 @@ Für das Bassverhältnis BR folgt somit:
 \begin{align*}
 BR = \frac{T_{125 \mathrm{Hz}} + T_{250 \mathrm{Hz}}}{T_{500 \mathrm{Hz}} + T_{1000 \mathrm{Hz}}} = 1,23
 \end{align*}  
-Laut dem Handbuch der Audiotechnik (Lit.verweis!!) wird solch ein Wert bei Musikaufführungsräumen angestrebt, in welchen der $BR$-Wert zwischen 1.0 und 1.3 liegen sollte.
+Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} (S. 191) wird solch ein Wert bei Musikaufführungsräumen angestrebt, in welchen der $BR$-Wert zwischen 1.0 und 1.3 liegen sollte.
 Für Sprache hingegen sollte der Wert unterhalb von 1.0 liegen.
 
 \section{Das Klarheitsmaß $\mathbf{C_{80}}$}
@@ -81,7 +81,7 @@ Dieses kann durch folgende wiederum diskretisierte Formel berechnet werden
 \begin{align*}
 C_{80} = 10\cdot \mathrm{log}_{10}\left(\frac{ \sum_{i=1}^{n_{80}} h^2[i]}{\sum_{i=n_{80}}^N h^2[i]}\right)
 \end{align*}
-wobei $n_{80} = 80 \mathrm{ms} \cdot f_s$ gilt. \\
+wobei $n_{80} = 0,08 \mathrm{s} \cdot f_s$ gilt. \\
 Als Ergebnisse erhalten wir folgende Werte:
 \begin{table}[H]
 \centering
@@ -108,7 +108,7 @@ Der interaurale Kreuzkorrelationskoeffizient gibt Auskunft über zeitliche Unter
 Für die Berechnung dieses Maßes benötigen wir eine binaurale Impulsantwort, also ein an zwei verschiedenen Stellen im Abstand der menschlichen Ohren aufgenommenes Signal. 
 Es wird berechnet, bei welchen Zeitdifferenzen $\tau$ die beiden Signale für linkes und rechtes Ohr maximal korrelieren.
 Dabei werden lediglich $\tau$-Werte aus dem Bereich zwischen -1 ms und 1 ms betrachtet, was den Bereich einschließt, den Schall braucht um vom einen zum anderen Ohr zu gelangen.  
-Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik (Lit.verweis!!) empfohlen verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten den Bereich zwischen 80 ms und 1000 ms. 
+Desweiteren unterscheidet man zwischen $IACC_{\mathrm{early}}$ und $IACC_{\mathrm{late}}$, je nachdem welcher Teil der Impulsantwort analysiert wird. Wie im Handbuch der Audiotechnik \cite{Weinzierl08} (S. 200) empfohlen, verwenden wir für den frühen interauralen Kreuzkorrelationskoeffizienten das Zeitintervall zwischen $t_1$ = 0 ms und $t_2$ = 80 ms und für den späten Koeffizienten den Bereich zwischen 80 ms und 1000 ms. 
 Die in Matlab implementierte diskretisierte Gleichung lautet:
 \begin{align*}
 IACC = \mathrm{max}\left( \frac{\sum_{i=n_1}^{n_2} p_L(i)p_R(i+\Delta n)} {\sqrt{\sum_{i=n_1}^{n_2}p_R(i)^2 \sum_{i=n_1}^{n_2} p_R(i)^2 }})\right) 
@@ -159,7 +159,7 @@ Um die durschnittlichen Absorptionsgrade in bestimmten Frequenzbändern zu erhal
 
 \section{Vergleich der Nachhallzeiten}
 \label{sec:ts}
-Die DIN 18041 (Lit.verweis!!) enthält Richtlinien für die Hörsamkeit von kleinen bis mittelgroßen Räumen. 
+Die DIN 18041 \cite{DIN_18041} enthält Richtlinien für die Hörsamkeit von kleinen bis mittelgroßen Räumen. 
 Wir finden dort Sollwerte für die Nachhhallzeit $T_{60}$, die eine gute Hörsamkeit garantieren, wenn Räume für Musik, Sprache oder Unterricht genutzt werden.
 Mithilfe der in der DIN-Norm angegebenen Formeln lassen sich diese Werte für den Raum HFT616 berechnen:
 \begin{align*}
