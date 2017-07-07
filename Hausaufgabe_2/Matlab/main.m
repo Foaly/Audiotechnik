@@ -116,7 +116,19 @@ print -depsc sm58_all
 
 
 %% d)
+
 KM184 = xlsread('10Grad+KM184.xls','A4:AL138');
+theta = 0:5/360*2*pi:2*pi;
+KM184_flipped = fliplr(KM184);
+input_rho = [ KM184(:,2:38) KM184_flipped(:,2:37)];
+
+f = 125;
+while f <=16000
+    figure;
+    [value index] = min(abs(KM184(:,1)-f))
+    mmpolar(theta,input_rho(index,:));
+    f = f*2;
+end
 
 
 % e)
