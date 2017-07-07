@@ -29,13 +29,8 @@ NORM_HZ = 1000;
 
 
 %% a)
-% load and scale data
-km120_0 = importdata('km120_0.txt');
-km120_0 = km120_0.data;
-km120_0 = Scale(km120_0, DBV, HZ, NORM_HZ);
-sm58_0 = importdata('sm58_0.txt');
-sm58_0 = sm58_0.data;
-sm58_0 = Scale(sm58_0, DBV, HZ, NORM_HZ);
+km120_0 = ImportScaled('km120_0.txt', DBV, HZ, NORM_HZ);
+sm58_0 = ImportScaled('sm58_0.txt', DBV, HZ, NORM_HZ);
 
 
 figure;
