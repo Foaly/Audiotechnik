@@ -85,7 +85,8 @@ ylim([-40 5])
 %print -depsc sm58_all
 
 
-% d)
-
+%% d)
+KM184 = xlsread('10Grad+KM184.xls','A4:AL138');
+mmpolar(1, 1, KM184(1,2:38));
 
 % e)

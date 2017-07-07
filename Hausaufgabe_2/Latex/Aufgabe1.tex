@@ -23,6 +23,15 @@ Siehe Abbildung \ref{fig:freq0}.
 \end{figure}
 
 \subsection{Glättung der Frequenzgänge}
+Die Implementierung des gleitenden Mittelwerts nehmen wir mit der filter() Methode aus Matlab vor.
+Das resultierende geglättete Spektrum ist in Abb. \ref{} zu sehen. Das Verhältnis benachbarter Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
+Die Frequenzauflösung der Spektren ist somit nicht linear, sondern abhängig von der Frequenz.
+Zudem mittelt der gleitende Mittelwert konstant über drei Bins.
+Das bedeutet, dass wir es mit einer Glättung mit relativer Bandbreite zu tun haben.
+Allerdings ist es weder eine terzbreite noch eine oktavbreite Glättung.
+In beiden Fällen müsste das Frequenzverhältnis benachbarter Bins größer sein.
+Allgemein gilt: Eine Glättung mit relativer Bandbreite liefert eine gleichmäßigere Kurve in logarithmischer Darstellung der Frequenzachse des Spektrums, als eine Glättung mit konstanter Bandbreite.
+Diese liefert wiederum eine gleichmäßig geglättete Kurve für die Darstellung mit linearer Frequenzachse.
 
 \subsection{Weitere Einfallsrichtungen}
 
