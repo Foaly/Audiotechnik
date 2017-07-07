@@ -68,6 +68,7 @@ hold on
 semilogx(km120_90_mvavg(:, HZ), km120_90_mvavg(:, DBV));
 semilogx(km120_180_mvavg(:, HZ), km120_180_mvavg(:, DBV));
 hold off
+legend('    0°','  90°', '120°');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 ylim([-40 5])
@@ -79,6 +80,7 @@ hold on
 semilogx(sm58_90_mvavg(:, HZ), sm58_90_mvavg(:, DBV));
 semilogx(sm58_180_mvavg(:, HZ), sm58_180_mvavg(:, DBV));
 hold off
+legend('    0°','  90°', '120°');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 ylim([-40 5])
