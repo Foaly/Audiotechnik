@@ -1,4 +1,4 @@
-function [X] = ImportScaled(filename, scale_index, target_index, target)
+function [X, offset] = ImportTarget(filename, scale_index, target_index, target)
     % import
     X = importdata(filename);
     X = X.data;
