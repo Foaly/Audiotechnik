@@ -37,6 +37,7 @@ sm58_0 = importdata('sm58_0.txt');
 sm58_0 = sm58_0.data;
 sm58_0 = Scale(sm58_0, DBV, HZ, NORM_HZ);
 
+
 figure;
 semilogx(km120_0(:, HZ), km120_0(:, DBV));
 xlabel('Frequenz [Hz]')
@@ -52,8 +53,9 @@ ylim([-30 5]);
 print -depsc sm58_0
 
 
-% b)
-
+%% b)
+km120_0_mvavg = mov_avg(km120_0, 3);
+sm58_0_mvavg = mov_avg(sm58_0, 3);
 
 % c)
 
