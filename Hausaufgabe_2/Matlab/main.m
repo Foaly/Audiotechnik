@@ -34,61 +34,89 @@ NORM_HZ = 1000;
 
 figure;
 semilogx(km120_0(:, HZ), km120_0(:, DBV));
-xlabel('Frequenz [Hz]')
-ylabel('Schalldruckpegel [dBV]')
+xlabel('Frequenz [Hz]');
+ylabel('Schalldruckpegel [dBV]');
+xlim([45 22500]);
 ylim([-30 5]);
-%print -depsc km120_0
+print -depsc km120_0
 
 figure;
 semilogx(sm58_0(:, HZ), sm58_0(:, DBV));
-xlabel('Frequenz [Hz]')
-ylabel('Schalldruckpegel [dBV]')
+xlabel('Frequenz [Hz]');
+ylabel('Schalldruckpegel [dBV]');
+xlim([45 22500]);
 ylim([-30 5]);
-%print -depsc sm58_0
+print -depsc sm58_0
 
 
 %% b)
-km120_0_mvavg = mov_avg(km120_0, 3);
-sm58_0_mvavg = mov_avg(sm58_0, 3);
+km120_0_movmean = MovMean(km120_0, DBV, 3);
+sm58_0_movmean = MovMean(sm58_0, DBV, 3);
+
+figure;
+semilogx(sm58_0_movmean(:, HZ), sm58_0_movmean(:, DBV));
+hold on
+semilogx(sm58_0(:, HZ), sm58_0(:, DBV));
+hold off
+legend('Geglättet', 'Normal', 'Location', 'northwest');
+xlabel('Frequenz [Hz]');
+ylabel('Schalldruckpegel [dBV]');
+xlim([45 22500]);
+ylim([-30 5]);
+print -depsc sm58_0_movmean
+
+figure;
+semilogx(km120_0_movmean(:, HZ), km120_0_movmean(:, DBV));
+hold on
+semilogx(km120_0(:, HZ), km120_0(:, DBV));
+hold off
+legend('Geglättet', 'Normal', 'Location', 'northwest');
+xlabel('Frequenz [Hz]');
+ylabel('Schalldruckpegel [dBV]');
+xlim([45 22500]);
+ylim([-30 5]);
+print -depsc km120_0_movmean
 
 %% c)
 km120_90 = ImportOffset('km120_90.txt', DBV, km120_offset);
 km120_180 = ImportOffset('km120_180.txt', DBV, km120_offset);
 sm58_90 = ImportOffset('sm58_90.txt', DBV, sm58_offset);
 sm58_180 = ImportOffset('sm58_180.txt', DBV, sm58_offset);
-km120_90_mvavg = mov_avg(km120_90, 3);
-km120_180_mvavg = mov_avg(km120_180, 3);
-sm58_90_mvavg = mov_avg(sm58_90, 3);
-sm58_180_mvavg = mov_avg(sm58_180, 3);
+km120_90_movmean = MovMean(km120_90, DBV, 3);
+km120_180_movmean = MovMean(km120_180, DBV, 3);
+sm58_90_movmean = MovMean(sm58_90, DBV, 3);
+sm58_180_movmean = MovMean(sm58_180, DBV, 3);
 
 %%
 figure;
-semilogx(km120_0_mvavg(:, HZ), km120_0_mvavg(:, DBV));
+semilogx(km120_0_movmean(:, HZ), km120_0_movmean(:, DBV));
 hold on
-semilogx(km120_90_mvavg(:, HZ), km120_90_mvavg(:, DBV));
-semilogx(km120_180_mvavg(:, HZ), km120_180_mvavg(:, DBV));
+semilogx(km120_90_movmean(:, HZ), km120_90_movmean(:, DBV));
+semilogx(km120_180_movmean(:, HZ), km120_180_movmean(:, DBV));
 hold off
-legend('    0°','  90°', '120°');
+legend('    0°','  90°', '120°','Location', 'northwest');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
-ylim([-40 5])
-%print -depsc km120_all
+xlim([45 22500]);
+ylim([-45 5])
+print -depsc km120_all
 
 figure;
-semilogx(sm58_0_mvavg(:, HZ), sm58_0_mvavg(:, DBV));
+semilogx(sm58_0_movmean(:, HZ), sm58_0_movmean(:, DBV));
 hold on
-semilogx(sm58_90_mvavg(:, HZ), sm58_90_mvavg(:, DBV));
-semilogx(sm58_180_mvavg(:, HZ), sm58_180_mvavg(:, DBV));
+semilogx(sm58_90_movmean(:, HZ), sm58_90_movmean(:, DBV));
+semilogx(sm58_180_movmean(:, HZ), sm58_180_movmean(:, DBV));
 hold off
-legend('    0°','  90°', '120°');
+legend('    0°','  90°', '120°','Location', 'northwest');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
-ylim([-40 5])
-%print -depsc sm58_all
+xlim([45 22500]);
+ylim([-45 5])
+print -depsc sm58_all
 
 
 %% d)
 KM184 = xlsread('10Grad+KM184.xls','A4:AL138');
-mmpolar(1, 1, KM184(1,2:38));
+
 
 % e)

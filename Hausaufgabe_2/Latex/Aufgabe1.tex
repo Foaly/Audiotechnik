@@ -2,29 +2,29 @@
 \label{sec:1}
 
 \subsection{Frontalschalleinfall}
-Siehe Abbildung \ref{fig:freq0}.
+Siehe Abbildung \ref{fig:freq_0}.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{KM120}
-        \includegraphics[width=\linewidth]{Figures/km120_0}
+        \includegraphics[width=0.95\linewidth]{Figures/km120_0}
         \label{fig:sub1}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{SM58}
-        \includegraphics[width=\linewidth]{Figures/sm58_0}
+        \includegraphics[width=0.95\linewidth]{Figures/sm58_0}
         \label{fig:sub2}
     \end{subfigure}
     \caption{Frequenzgänge der Mikrofone normiert auf 0 dBV bei 1000 Hz}
-    \label{fig:freq0}
+    \label{fig:freq_0}
 \end{figure}
 
 \subsection{Glättung der Frequenzgänge}
 Die Implementierung des gleitenden Mittelwerts nehmen wir mit der filter() Methode aus Matlab vor.
-Das resultierende geglättete Spektrum ist in Abb. \ref{} zu sehen. Das Verhältnis benachbarter Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
+Das resultierende geglättete Spektrum ist in Abb. \ref{fig:freq_movmean} zu sehen. Das Verhältnis benachbarter Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
 Die Frequenzauflösung der Spektren ist somit nicht linear, sondern abhängig von der Frequenz.
 Zudem mittelt der gleitende Mittelwert konstant über drei Bins.
 Das bedeutet, dass wir es mit einer Glättung mit relativer Bandbreite zu tun haben.
@@ -33,6 +33,44 @@ In beiden Fällen müsste das Frequenzverhältnis benachbarter Bins größer sei
 Allgemein gilt: Eine Glättung mit relativer Bandbreite liefert eine gleichmäßigere Kurve in logarithmischer Darstellung der Frequenzachse des Spektrums, als eine Glättung mit konstanter Bandbreite.
 Diese liefert wiederum eine gleichmäßig geglättete Kurve für die Darstellung mit linearer Frequenzachse.
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{KM120}
+        \includegraphics[width=0.95\linewidth]{Figures/km120_0_movmean.eps}
+        \label{fig:sub1}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{SM58}
+        \includegraphics[width=0.95\linewidth]{Figures/sm58_0_movmean.eps}
+        \label{fig:sub2}
+    \end{subfigure}
+    \caption{Unterschied zwischen dem normalen und dem geglätteten Frequenzgang der Mikrofone}
+    \label{fig:freq_movmean}
+\end{figure}
+
 \subsection{Weitere Einfallsrichtungen}
+Siehe Abbildung \ref{fig:freq_all}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{KM120}
+        \includegraphics[width=0.95\linewidth]{Figures/km120_all}
+        \label{fig:sub1}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{SM58}
+        \includegraphics[width=0.95\linewidth]{Figures/sm58_all.eps}
+        \label{fig:sub2}
+    \end{subfigure}
+    \caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
+    \label{fig:freq_all}
+\end{figure}
+
 
 \subsection{Richtcharakteristik}
