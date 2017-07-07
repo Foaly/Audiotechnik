@@ -38,7 +38,7 @@ xlabel('Frequenz [Hz]');
 ylabel('Schalldruckpegel [dBV]');
 xlim([45 22500]);
 ylim([-30 5]);
-print -depsc km120_0
+%print -depsc km120_0
 
 figure;
 semilogx(sm58_0(:, HZ), sm58_0(:, DBV));
@@ -46,7 +46,7 @@ xlabel('Frequenz [Hz]');
 ylabel('Schalldruckpegel [dBV]');
 xlim([45 22500]);
 ylim([-30 5]);
-print -depsc sm58_0
+%print -depsc sm58_0
 
 
 %% b)
@@ -63,7 +63,7 @@ xlabel('Frequenz [Hz]');
 ylabel('Schalldruckpegel [dBV]');
 xlim([45 22500]);
 ylim([-30 5]);
-print -depsc sm58_0_movmean
+%print -depsc sm58_0_movmean
 
 figure;
 semilogx(km120_0_movmean(:, HZ), km120_0_movmean(:, DBV));
@@ -75,7 +75,7 @@ xlabel('Frequenz [Hz]');
 ylabel('Schalldruckpegel [dBV]');
 xlim([45 22500]);
 ylim([-30 5]);
-print -depsc km120_0_movmean
+%print -depsc km120_0_movmean
 
 %% c)
 km120_90 = ImportOffset('km120_90.txt', DBV, km120_offset);
@@ -99,7 +99,7 @@ xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 xlim([45 22500]);
 ylim([-45 5])
-print -depsc km120_all
+%print -depsc km120_all
 
 figure;
 semilogx(sm58_0_movmean(:, HZ), sm58_0_movmean(:, DBV));
@@ -112,7 +112,7 @@ xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 xlim([45 22500]);
 ylim([-45 5])
-print -depsc sm58_all
+%print -depsc sm58_all
 
 
 %% d)
