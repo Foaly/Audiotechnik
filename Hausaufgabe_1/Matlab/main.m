@@ -100,6 +100,7 @@ IACC_late_1000 = IACC(x2_1000, x2_fs, 80, 1000);
 
 
 %% Aufgabe E)
+% Berechnung nach Sabine Formel
 
 V = 7 * 4 * 4;
 S = 7 * 4 * 4 + 4 * 4 * 2;
@@ -116,7 +117,7 @@ T_soll_unterricht = 0.32 * log10(V) - 0.17;
 
 
 %% Aufgabe G)
-% siehe MÃ¶ser s.76
+% siehe Möser s.76
 
 lw = 85;
 p = [4 2 0];
@@ -144,7 +145,7 @@ end
 %%
 [Ys,Xs] = meshgrid(Y, X);
 % sound pressure level on the floor
-s1 = surf(Ys,Xs,L_ges(:,:,1))
+s1 = surf(Ys,Xs,L_ges(:,:,1));
 s1.EdgeColor = 'none';
 colorbar;
 xlim([0 4]);
@@ -156,7 +157,7 @@ zlabel('Schalldruckpegel in dB');
 print -depsc Schalldruckverteilung
 
 % sound pressure level in middle z-height
-s2 = surf(Ys,Xs,L_ges(:,:,round(length(Z)/2)))
+s2 = surf(Ys,Xs,L_ges(:,:,round(length(Z)/2)));
 s2.EdgeColor = 'none';
 colorbar;
 xlim([0 4]);
@@ -168,7 +169,7 @@ zlabel('Schalldruckpegel in dB');
 print -depsc Schalldruckverteilung2
 
 % sound pressure level at the ceiling
-s3 = surf(Ys,Xs,L_ges(:,:,round(length(Z))))
+s3 = surf(Ys,Xs,L_ges(:,:,round(length(Z))));
 s3.EdgeColor = 'none';
 colorbar;
 xlim([0 4]);

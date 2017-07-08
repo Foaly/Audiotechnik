@@ -14,13 +14,13 @@ r = h(s1:s2, 2);
 rms = sqrt(sum(l.^2) * sum(r.^2));
 
 % pad right channel for tau
-r_pad = [zeros(s1ms,1); r; zeros(s1ms,1)]
+r_pad = [zeros(s1ms,1); r; zeros(s1ms,1)];
 
 for t = 1:(2*s1ms)
-    p = sum(l.*r_pad(t:t+len))
+    p = sum(l.*r_pad(t:t+len));
     IACF(t) = p / rms;
 end
 
-IACC = max(abs(IACF))
+IACC = max(abs(IACF));
 
 end
