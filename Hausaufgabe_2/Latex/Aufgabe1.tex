@@ -21,7 +21,7 @@ Als Grundlage stehen die Frequenzgangsdaten der Schalldruckpegel aus verschieden
         \hline
         Shure & \texttt{SM58} & Druckgradienten- und Schnelleempfänger & Niere & 0°, 90°, 180° \\
         Neumann & \texttt{KM120} & Druckgradienten- und Auslenkungsempfänger & Acht & 0°, 90°, 180° \\
-        Neumann & \texttt{KM184} & Druckgradienten- und Auslenkungsempfänger & Niere & 0°, 5°, ..., 180°
+        Neumann & \texttt{KM184} & Druckgradienten- und Auslenkungsempfänger & Niere & 0°, 5°, ... , 180°
     \end{tabular}
 \end{table}
 
@@ -192,16 +192,15 @@ Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \fo
 
 \subsection{Bündelungsgrad und Bündelungsmaß}
 \label{subsec:e}
-Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung \ref{fig:buendel} dargestellt. 
+\begin{wrapfigure}{L}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{Figures/Buendelungsgrad}
+    \captionof{figure}{Bündelungsgrad des Neumann KM184 in Abhängigkeit der Frequenz}
+    \label{fig:buendel}
+\end{wrapfigure}
+Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung \ref{fig:buendel} dargestellt.
 Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad 3, eine Breite Niere den Bündelungsgrad 1,89 und eine Superniere den Bündelungsgrad 3,73.
 Demnach nähert sich der mit der Frequenz moderat steigende Bündelungsgrad des KM184 zwischen 100 Hz und ca. 5000 Hz zunehmend dem einer Niere an.
 Dann kommt es zu einem Einbruch zwischen ca. 6000 Hz und 10000 Hz, wo der Bündelungsgrad bis auf einen für eine breite Niere typischen Wert abfällt. 
 Für höhere Frequenzen steigt $\gamma$ nochmal stark an und erreicht  Super- und Hypernierentypische Werte.
 \files{main.m}
-
-\begin{figure}[bth]
-    \centering
-    \includegraphics[width=\linewidth]{Figures/Buendelungsgrad}
-    \captionof{figure}{Bündelungsgrad des Neumann KM184 in Abhängigkeit der Frequenz}
-    \label{fig:buendel}
-\end{figure}
