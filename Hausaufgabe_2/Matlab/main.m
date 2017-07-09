@@ -142,4 +142,37 @@ legend('125 Hz','250 Hz', '500 Hz', '1000 Hz', '2000 Hz', '4000 Hz', '8000 Hz', 
 print -depsc KM184_allfreqs
 
 
-% e)
+%% e)
+% Convert dB values to p values, choose p_0 = 1 arbitrarily
+
+KM184_p = 10.^(KM184(:,2:38)./20); % Convert from dB to SPL
+freqs = KM184(:,1);
+p_max = zeros(size(KM184_p,1),1);
+
+% find max value for each frequncy
+for i= 1:size(KM184_p,1)
+    p_max(i) = max(KM184_p(i,:));
+end
+
+% directivity factor (take into account only 180 degrees)
+gamma = zeros(size(KM184_p,1),1);
+area_element = 5/360*2*pi*sum(sin(theta));
+for i= 1:size(KM184_p,1)
+    num = 37*p_max(i)^2*area_element;
+    
+    denom = sum(KM184_p(i,:).^2.*area_element) ;
+    gamma(i) = num/denom;
+end
+
+% plot frequency dependant directivity factor
+figure;
+semilogx(freqs,gamma);
+xlabel('Frequenz in Hz');
+ylabel('Bündelungsgrad');
+xlim([freqs(1) freqs(end)]);
+print -depsc Buendelungsgrad
+
+
+
+
+
