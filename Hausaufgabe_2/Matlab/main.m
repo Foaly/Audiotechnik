@@ -116,19 +116,30 @@ ylim([-45 5])
 
 
 %% d)
-
+% read .xls file
 KM184 = xlsread('10Grad+KM184.xls','A4:AL138');
+% prepare polar plot
 theta = 0:5/360*2*pi:2*pi;
 KM184_flipped = fliplr(KM184);
-input_rho = [ KM184(:,2:38) KM184_flipped(:,2:37)];
-
+rho = [ KM184(:,2:38) KM184_flipped(:,2:37)];
+% polar plots separetely
+index = zeros();
 f = 125;
+i=1;
 while f <=16000
     figure;
-    [value index] = min(abs(KM184(:,1)-f))
-    mmpolar(theta,input_rho(index,:));
+    [value index(i)] = min(abs(KM184(:,1)-f));
+    mmpolar(theta,input_rho(index(i),:));
+    title(['f =' num2str(f) 'Hz']);
+    print(['KM184_' num2str(f) 'Hz'],'-depsc')
     f = f*2;
+    i = i+1;
 end
+% polar plot all in one
+figure;
+mmpolar(theta, rho(index(1),:), '-r', theta, rho(index(2),:), '-g', theta, rho(index(3),:), '-b', theta, rho(index(4),:), '-k', theta, rho(index(5),:), 'c', theta, rho(index(6),:), '--r', theta, rho(index(7),:), '--b', theta, rho(index(8),:), '--k'); 
+legend('125 Hz','250 Hz', '500 Hz', '1000 Hz', '2000 Hz', '4000 Hz', '8000 Hz', '16000 Hz');
+print -depsc KM184_allfreqs
 
 
 % e)
