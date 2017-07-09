@@ -1,22 +1,38 @@
 \section{Mikrofone}
 \label{sec:1}
+In dieser Hausaufgabe werden die akustischen Eigenschaften einer Auswahl an Mikrofonen (siehe Tabelle \ref{tab:mics}) analysiert und miteinander verglichen.
+Als Grundlage stehen die Frequenzgangsdaten für den Schalldruckpegel aus verschieden Einfallsrichtungen zur Verfügung.
 
-\subsection{Frontalschalleinfall}
+\def\arraystretch{1.5}
+\begin{table}[h]
+    \centering
+    \caption{Auswahl der Mikrofone}
+    \label{tab:mics}
+    \begin{tabular}{l l l l l}
+        Hersteller & Typ & Akustische Arbeitsweise & Richtcharakteristik & Einfallsrichtungen \\
+        \hline
+        Shure & \texttt{SM58} & Druckgradienten- und Schnelleempfänger & Niere & 0$^\circ$, 90$^\circ$, 180$^\circ$ \\
+        Neumann & \texttt{KM120} & Druckgradienten- und Auslenkungsempfänger & Acht & 0$^\circ$, 90$^\circ$, 180$^\circ$ \\
+        Neumann & \texttt{KM184} & Druckgradienten- und Auslenkungsempfänger & Niere & 0$^\circ$, 5$^\circ$, ..., 180$^\circ$ 
+    \end{tabular}
+\end{table}
+
+
+\subsection{\texttt{K120} und \texttt{SM58} bei Frontalschalleinfall}
 Siehe Abbildung \ref{fig:freq_0}.
 
-\begin{figure}[H]
+
+\begin{figure}[b]
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{KM120}
         \includegraphics[width=0.95\linewidth]{Figures/km120_0}
-        \label{fig:sub1}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_0}
-        \label{fig:sub2}
     \end{subfigure}
     \caption{Frequenzgänge der Mikrofone bei Frontalschalleinfall normiert auf 0 dBV bei 1000 Hz}
     \label{fig:freq_0}
@@ -33,40 +49,36 @@ In beiden Fällen müsste das Frequenzverhältnis benachbarter Bins größer sei
 Allgemein gilt: Eine Glättung mit relativer Bandbreite liefert eine gleichmäßigere Kurve in logarithmischer Darstellung der Frequenzachse des Spektrums, als eine Glättung mit konstanter Bandbreite.
 Diese liefert wiederum eine gleichmäßig geglättete Kurve für die Darstellung mit linearer Frequenzachse.
 
-\begin{figure}[H]
+\begin{figure}[b]
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{KM120}
         \includegraphics[width=0.95\linewidth]{Figures/km120_0_movmean}
-        \label{fig:sub1}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_0_movmean}
-        \label{fig:sub2}
     \end{subfigure}
-    \caption{Unterschied zwischen dem normalen und dem geglätteten Frequenzgang der Mikrofone bei Frontalschalleinfall}
+    \caption{Unterschied zwischen dem normalen und dem geglätteten Frequenzgang der Mikrofone bei frontalem Schalleinfall}
     \label{fig:freq_movmean}
 \end{figure}
 
 \subsection{Weitere Einfallsrichtungen}
 Siehe Abbildung \ref{fig:freq_all}.
 
-\begin{figure}[H]
+\begin{figure}[b]
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{KM120}
         \includegraphics[width=0.95\linewidth]{Figures/km120_all}
-        \label{fig:sub1}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_all.eps}
-        \label{fig:sub2}
     \end{subfigure}
     \caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
     \label{fig:freq_all}
