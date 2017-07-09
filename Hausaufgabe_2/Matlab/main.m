@@ -95,12 +95,12 @@ hold on
 semilogx(km120_90_movmean(:, HZ), km120_90_movmean(:, DBV));
 semilogx(km120_180_movmean(:, HZ), km120_180_movmean(:, DBV));
 hold off
-legend('    0Â°','  90Â°', '120Â°','Location', 'northwest');
+legend('    0°','  90°', '180°','Location', 'northwest');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 xlim([45 22500]);
 ylim([-45 5])
-%print -depsc km120_all
+print -depsc km120_all
 
 figure;
 semilogx(sm58_0_movmean(:, HZ), sm58_0_movmean(:, DBV));
@@ -108,12 +108,12 @@ hold on
 semilogx(sm58_90_movmean(:, HZ), sm58_90_movmean(:, DBV));
 semilogx(sm58_180_movmean(:, HZ), sm58_180_movmean(:, DBV));
 hold off
-legend('    0Â°','  90Â°', '120Â°','Location', 'northwest');
+legend('    0°','  90°', '180°','Location', 'northwest');
 xlabel('Frequenz [Hz]')
 ylabel('Schalldruckpegel [dBV]')
 xlim([45 22500]);
 ylim([-45 5])
-%print -depsc sm58_all
+print -depsc sm58_all
 
 
 %% d)
