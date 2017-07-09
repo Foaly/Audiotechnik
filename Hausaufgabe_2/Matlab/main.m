@@ -129,7 +129,7 @@ i=1;
 while f <=16000
     figure;
     [value index(i)] = min(abs(KM184(:,1)-f));
-    mmpolar(theta,input_rho(index(i),:));
+    mmpolar(theta, rho(index(i),:));
     title(['f =' num2str(f) 'Hz']);
     print(['KM184_' num2str(f) 'Hz'],'-depsc')
     f = f*2;

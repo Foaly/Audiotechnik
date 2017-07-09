@@ -32,3 +32,6 @@
 # Soundfiles
 *.wav
 *.mp3
+
+# eps files in the Matlab folder
+*/Matlab/*.eps
