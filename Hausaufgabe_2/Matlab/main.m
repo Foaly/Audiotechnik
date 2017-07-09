@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Technische Universität Berlin
+%%
+%%  Technische Universitaet Berlin
 %%  Fachgebiet Audiokommunikation
 %%  Audiotechnik - Zweite Hausaufgabe
 %%
