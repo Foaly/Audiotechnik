@@ -88,13 +88,87 @@ Die Abbildung \ref{fig:freq_all} zeigt die bei 0° auf 1000 Hz normierten Freque
 
 
 \subsection{Richtcharakteristik}
-Die frequenzabhängigen Richtcharakteristiken des Neumann KM184 sind in den Abbildungen ??? zu sehen.
+Die frequenzabhängigen Richtcharakteristiken des Neumann KM184 sind in den Abbildungen \ref{fig:Polar_125} bis \ref{fig:Polar_allfreqs} zu sehen.
 Die Richtcharakteristik liegt je nach Frequenz zwischen breiter Niere und Niere. 
 Die Richtcharakteristiken bei 125 Hz hat die Form einer breiten Niere, die Charakteristiken zwischen 250 Hz und 8000 Hz sind nierenförmig und bei 16000 Hz erkennen wir eine Superniere.
-Beim Vergleich mit den frequenzabhängigen Charakteristiken auf www.neumann.com können wir keine deutlichen Unterschiede erkennen.
+Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \footnote{\url{https://www.neumann.com/assets/diagrams/s180_diagrams.htm}} des Herstellers Neumann können wir keine deutlichen Unterschiede erkennen.
+
+
 \subsection{Bündelungsgrad}
 Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung ??? dargestellt. 
-Laut dem Handbuch der Audiotechnik (cite!!) hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad 3, eine breite Niere den Bündelungsgrad 1,89 und eine Superniere den Bündelungsgrad 3,73.
+Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad 3, eine breite Niere den Bündelungsgrad 1,89 und eine Superniere den Bündelungsgrad 3,73.
 Demnach nähert sich der mit der Frequenz moderat steigende Bündelungsgrad des KM184 zwischen 100 Hz und ca. 5000 Hz zunehmend dem einer Niere an.
 Dann kommt es zu einem Einbruch zwischen ca. 6000 Hz und 10000 Hz, wo der Bündelungsgrad bis auf einen für eine breite Niere typischen Wert abfällt. 
 Für höhere Frequenzen steigt $\gamma$ nochmal stark an und erreicht  Super- und Hypernierentypische Werte.
+
+
+
+\begin{figure}[b]
+    \centering
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_125Hz}
+        \caption{125 Hz}
+        \label{fig:Polar_125}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_250Hz}
+        \caption{250 Hz}
+        \label{fig:Polar_250}
+    \end{subfigure}
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_500Hz}
+        \caption{500 Hz}
+        \label{fig:Polar_500}
+    \end{subfigure}
+    %\caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
+\end{figure}
+
+\begin{figure}[b]
+    \centering
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_1000Hz}
+        \caption{1000 Hz}
+        \label{fig:Polar_1000}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_2000Hz}
+        \caption{2000 Hz}
+        \label{fig:Polar_2000}
+    \end{subfigure}
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_4000Hz}
+        \caption{4000 Hz}
+        \label{fig:Polar_4000}
+    \end{subfigure}
+    %\caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
+\end{figure}
+
+
+\begin{figure}[b]
+    \centering
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_8000Hz}
+        \caption{8000 Hz}
+        \label{fig:Polar_8000}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=0.95\linewidth]{Figures/KM184_16000Hz}
+        \caption{16000 Hz}
+        \label{fig:Polar_16000}
+    \end{subfigure}
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[height=\linewidth]{Figures/KM184_allfreqs}
+        \caption{Alle Frequenzen}
+        \label{fig:Polar_allfreqs}
+    \end{subfigure}
+    %\caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
+\end{figure}
