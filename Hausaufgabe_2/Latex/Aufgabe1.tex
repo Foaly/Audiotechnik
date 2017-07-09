@@ -62,7 +62,6 @@ Allerdings ist es weder eine terzbreite noch eine oktavbreite Glättung.
 In beiden Fällen müsste das Frequenzverhältnis benachbarter Bins größer sein.
 Allgemein gilt: Eine Glättung mit relativer Bandbreite liefert eine gleichmäßigere Kurve in logarithmischer Darstellung der Frequenzachse des Spektrums, als eine Glättung mit konstanter Bandbreite.
 Letztere liefert wiederum eine gleichmäßig geglättete Kurve für eine Darstellung mit linearer Frequenzachse.
-\files{main.m, MovMean.m}
 
 \begin{figure}[bth]
     \centering
@@ -79,14 +78,16 @@ Letztere liefert wiederum eine gleichmäßig geglättete Kurve für eine Darstel
     \caption{Unterschied zwischen dem normalen und dem geglätteten Frequenzgang der Mikrofone bei frontalem Schalleinfall}
     \label{fig:freq_movmean}
 \end{figure}
-
+Wie erwartet führt die Glättung zu einer weicheren Kurve. 
+Vergleichen wir unsere Darstellung der Frequenzgänge mit denen auf den Websites des Herstellers Neumann \footnote{\url{https://www.neumann.com/assets/diagrams/km100_diagrams.htm}} und des Herstellers Shure \footnote{\url{https://www.shure.de/produkte/mikrofone/sm58}} fällt auf, dass die Frequenzgänge auf den Websites  um einiges stärker geglättet sind.
+\files{main.m, MovMean.m}
 
 \subsection{\texttt{K120} und \texttt{SM58} für alle Einfallsrichtungen}
 \label{subsec:c}
 Die im Aufgabenteil \ref{subsec:a} extrahierten Informationen zum frontalen Schalleinfall werden nun um die beiden Einfallsrichtungen bei 90° und 180° erweitert.
 In diesem Fall kommen die in Aufgabe \ref{subsec:a} zwischengespeicherten Offsets für die Normierung der Schalldruckpegel zum Einsatz, damit die Schalldruckpegel für alle Einfallswinkel den gleichen Referenzwert haben.
 Die Frequenzen der neu extrahierten Informationen werden ebenfalls geglättet und sind gemeinsam mit dem geglätteten Frontalschalleinfall aus Aufgabenteil \ref{subsec:b} in Abbildung \ref{fig:freq_all} dargestellt.
-\files{main.m, ImportOffset.m, MovMean.m}
+
 
 \begin{figure}[bth]
     \centering
@@ -94,6 +95,7 @@ Die Frequenzen der neu extrahierten Informationen werden ebenfalls geglättet un
         \centering
         \caption{KM120}
         \includegraphics[width=0.95\linewidth]{Figures/km120_all}
+        \label{fig:km_sm}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -103,6 +105,17 @@ Die Frequenzen der neu extrahierten Informationen werden ebenfalls geglättet un
     \caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
     \label{fig:freq_all}
 \end{figure}
+
+Die 0° Frequenzgänge des Neumann und Shure Mikrofons unterscheiden sich insofern, dass die Empfindlichkeit des Shure Mikrofons bei hohen Frequenzen ansteigt und die des Neumann Mikrofons näherungsweise konstant bleibt (siehe Abbildung \ref{fig:km_sm})
+Dies lässt sich mit der Tatsache erklären, dass beide Mikrofone Druckgradientenempfänger sind, was zunächst zu einer mit der Frequenz ansteigenden Empfindlichkeit führt.
+Der Effekt wird beim Neumann Mikrofon allerdings kompensiert, da es sich um einen Auslenkungsempfänger handelt, bei dem die Empfindlichkeit mit der Frequenz abnimmt.
+Beim Shure Mikrofon bleibt dieser Effekt aus, da Schnelleempfänger eine frequenzunabhägige Empfindlichkeit aufweisen.\\
+Die Richtungsabhängigkeit der Frequenzgänge (siehe Abbildung \ref{fig:freq_all} stimmt mit den Richtcharakteristiken der beiden Mirkofone überein. 
+Beim KM120 haben wir fast identische Frequenzgänge für die Einfallsrichtungen 0° und 180° und nur sehr geringe Empfindlichkeiten in 90° Richtung, passend zur Acht-Charakteristik.
+Beim SM58 sinkt die Empfindlichkeit bei allen Frequenzen mit steigender Winkeldifferenz zur 0° Richtung, passend zur Nierencharakteristik.
+Auffallend ist dabei, dass tiefe und hohe Frequenzen für die 180° Einfallsrichtung nicht so stark absinken, wie die mittleren Frequenzen.
+Das starke Absinken entspricht dem Verhalten einer idealen Niere, bei hohen und tiefen Frequenzen gibt es also Abweichungen von der typischen Nierencharakteristik.  
+\files{main.m, ImportOffset.m, MovMean.m}
 
 
 \subsection{Richtcharakteristik des \texttt{KM184}}
