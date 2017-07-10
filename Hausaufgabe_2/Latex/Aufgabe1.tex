@@ -19,9 +19,9 @@ Als Grundlage stehen die Frequenzgangsdaten der Schalldruckpegel aus verschieden
     \begin{tabular}{l l l l l}
         Hersteller & Typ & Akustische Arbeitsweise & Richtcharakteristik & Einfallsrichtung \\
         \hline
-        Shure & \texttt{SM58} & Druckgradienten- und Schnelleempfänger & Niere & 0°, 90°, 180° \\
-        Neumann & \texttt{KM120} & Druckgradienten- und Auslenkungsempfänger & Acht & 0°, 90°, 180° \\
-        Neumann & \texttt{KM184} & Druckgradienten- und Auslenkungsempfänger & Niere & 0°, 5°, ... , 180°
+        Shure & \texttt{SM58} & Druckgradienten-/Schnelleempfänger & Niere & 0°, 90°, 180° \\
+        Neumann & \texttt{KM120} & Druckgradienten-/Auslenkungsempfänger & Acht & 0°, 90°, 180° \\
+        Neumann & \texttt{KM184} & Druckgradienten-/Auslenkungsempfänger & Niere & 0°, 5°, ... , 180°
     \end{tabular}
 \end{table}
 
@@ -45,18 +45,18 @@ Zur Weiterverarbeitung im Aufgabenteil \ref{subsec:c} werden die Offsets zwische
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_0}
     \end{subfigure}
-    \caption{Frequenzgänge der Mikrofone bei Frontalschalleinfall normiert auf 0 dBV bei 1000 Hz}
+    \caption{Frequenzgänge des KM120 und SM58 bei Frontalschalleinfall normiert auf 0 dBV bei 1000 Hz}
     \label{fig:freq_0}
 \end{figure}
 
 \subsection{Glättung der Frequenzgänge}
 \label{subsec:b}
-Für die Implementierung des gleitenden Mittelwerts verwenden wir Matlabs \texttt{MovMean()} Methode.
-Das resultierende, geglättete Spektrum ist in Abbildung \ref{fig:freq_movmean} zu sehen. Das Verhältnis benachbarter Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
-Die Implementierung des gleitenden Mittelwerts nehmen wir mit der filter() Methode aus Matlab vor.
-Das resultierende geglättete Spektrum ist in Abbildung \ref{fig:freq_movmean} zu sehen. Das Verhältnis benachbarter Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
-Die Frequenzauflösung der Spektren ist somit nicht linear, sondern abhängig von der Frequenz.
-Zudem mittelt der gleitende Mittelwert konstant über drei Bins.
+Für die Implementierung des gleitenden Mittelwerts verwenden wir die Matlab-Funktion \texttt{movmean()}.
+Mit einer Fensterlänge von drei wird dabei konstant über drei Bins gemittelt.
+Das resultierende geglättete Spektrum ist in Abbildung \ref{fig:freq_movmean} zu sehen.
+
+Das Verhältnis aller benachbarten Frequenzbins ist konstant und beträgt $f_{n+1}/f_{n} = 1.057$.
+Somit ist die Frequenzauflösung der Spektren nicht linear, sondern abhängig von der Frequenz.
 Das bedeutet, dass es sich um eine Glättung mit relativer Bandbreite handelt.
 Allerdings ist es weder eine terzbreite noch eine oktavbreite Glättung.
 In beiden Fällen müsste das Frequenzverhältnis benachbarter Bins größer sein.
@@ -75,7 +75,7 @@ Letztere liefert wiederum eine gleichmäßig geglättete Kurve für eine Darstel
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_0_movmean}
     \end{subfigure}
-    \caption{Unterschied zwischen dem normalen und dem geglätteten Frequenzgang der Mikrofone bei frontalem Schalleinfall}
+    \caption{Unterschied des normalen und geglätteten Frequenzgangs bei frontalem Schalleinfall des KM120 und SM58}
     \label{fig:freq_movmean}
 \end{figure}
 
@@ -84,11 +84,22 @@ Vergleichen wir unsere Darstellung der Frequenzgänge mit denen auf den Websites
 \files{main.m, MovMean.m}
 
 
-\subsection{\texttt{K120} und \texttt{SM58} für alle Einfallsrichtungen}
+\subsection{\texttt{KM120} und \texttt{SM58} für alle Einfallsrichtungen}
 \label{subsec:c}
 Die im Aufgabenteil \ref{subsec:a} extrahierten Informationen zum frontalen Schalleinfall werden nun um die beiden Einfallsrichtungen bei 90° und 180° erweitert.
 In diesem Fall kommen die in Aufgabe \ref{subsec:a} zwischengespeicherten Offsets für die Normierung der Schalldruckpegel zum Einsatz, damit die Schalldruckpegel für alle Einfallswinkel den gleichen Referenzwert haben.
-Die Frequenzen der neu extrahierten Informationen werden ebenfalls geglättet und sind gemeinsam mit dem geglätteten Frontalschalleinfall aus Aufgabenteil \ref{subsec:b} in Abbildung \ref{fig:freq_all} dargestellt.
+Die Frequenzen der neu extrahierten Informationen werden ebenfalls mit einer Fenstergröße von drei geglättet und sind gemeinsam mit dem geglätteten Frontalschalleinfall aus Aufgabenteil \ref{subsec:b} in Abbildung \ref{fig:freq_all} dargestellt.
+
+Die 0° Frequenzgänge des KM120 und SM58 Mikrofons unterscheiden sich insofern, dass die Empfindlichkeit des SM58 Mikrofons bei hohen Frequenzen ansteigt und die des KM120 Mikrofons näherungsweise konstant bleibt.
+Dies lässt sich mit der Tatsache erklären, dass beide Mikrofone Druckgradientenempfänger sind, was zunächst zu einer mit der Frequenz ansteigenden Empfindlichkeit führt.
+Der Effekt wird beim KM120 Mikrofon allerdings kompensiert, da es sich um einen Auslenkungsempfänger handelt, bei dem die Empfindlichkeit mit der Frequenz abnimmt.
+Beim SM58 Mikrofon bleibt dieser Effekt aus, da Schnelleempfänger eine frequenzunabhägige Empfindlichkeit aufweisen.
+Die Richtungsabhängigkeit der Frequenzgänge stimmt mit den Richtcharakteristiken der beiden Mikrofone überein.
+Beim KM120 haben wir fast identische Frequenzgänge für die Einfallsrichtungen 0° und 180° und nur sehr geringe Empfindlichkeiten in 90° Richtung, passend zur Acht-Charakteristik.
+Beim SM58 sinkt die Empfindlichkeit bei allen Frequenzen mit steigender Winkeldifferenz zur 0° Richtung, passend zur Nierencharakteristik.
+Auffallend ist dabei, dass tiefe und hohe Frequenzen für die 180° Einfallsrichtung nicht so stark absinken, wie die mittleren Frequenzen.
+Das starke Absinken entspricht dem Verhalten einer idealen Niere, bei hohen und tiefen Frequenzen gibt es also Abweichungen von der typischen Nierencharakteristik.  
+\files{main.m, ImportOffset.m, MovMean.m}
 
 \begin{figure}[bth]
     \centering
@@ -103,27 +114,19 @@ Die Frequenzen der neu extrahierten Informationen werden ebenfalls geglättet un
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_all.eps}
     \end{subfigure}
-    \caption{Geglättete Frequenzgänge aus drei verschiedenen Einfallsrichtungen}
+    \caption{Geglättete Frequenzgänge  des KM120 und SM58 aus drei verschiedenen Einfallsrichtungen}
     \label{fig:freq_all}
 \end{figure}
 
-Die 0° Frequenzgänge des Neumann und Shure Mikrofons unterscheiden sich insofern, dass die Empfindlichkeit des Shure Mikrofons bei hohen Frequenzen ansteigt und die des Neumann Mikrofons näherungsweise konstant bleibt (siehe Abbildung \ref{fig:km_sm})
-Dies lässt sich mit der Tatsache erklären, dass beide Mikrofone Druckgradientenempfänger sind, was zunächst zu einer mit der Frequenz ansteigenden Empfindlichkeit führt.
-Der Effekt wird beim Neumann Mikrofon allerdings kompensiert, da es sich um einen Auslenkungsempfänger handelt, bei dem die Empfindlichkeit mit der Frequenz abnimmt.
-Beim Shure Mikrofon bleibt dieser Effekt aus, da Schnelleempfänger eine frequenzunabhägige Empfindlichkeit aufweisen.\\
-Die Richtungsabhängigkeit der Frequenzgänge (siehe Abbildung \ref{fig:freq_all} stimmt mit den Richtcharakteristiken der beiden Mirkofone überein. 
-Beim KM120 haben wir fast identische Frequenzgänge für die Einfallsrichtungen 0° und 180° und nur sehr geringe Empfindlichkeiten in 90° Richtung, passend zur Acht-Charakteristik.
-Beim SM58 sinkt die Empfindlichkeit bei allen Frequenzen mit steigender Winkeldifferenz zur 0° Richtung, passend zur Nierencharakteristik.
-Auffallend ist dabei, dass tiefe und hohe Frequenzen für die 180° Einfallsrichtung nicht so stark absinken, wie die mittleren Frequenzen.
-Das starke Absinken entspricht dem Verhalten einer idealen Niere, bei hohen und tiefen Frequenzen gibt es also Abweichungen von der typischen Nierencharakteristik.  
-\files{main.m, ImportOffset.m, MovMean.m}
 
-
+\newpage
 \subsection{Richtcharakteristik des \texttt{KM184}}
 \label{subsec:d}
 Die frequenzabhängigen Richtcharakteristiken des Neumann KM184 sind in den Abbildungen \ref{fig:Polar_sep} und \ref{fig:Polar_allfreqs} zu sehen.
-Die Richtcharakteristik liegt je nach Frequenz zwischen Breiter Niere und Niere. 
-Die Richtcharakteristiken bei 125 Hz hat die Form einer Breiten Niere, die Charakteristiken zwischen 250 Hz und 8000 Hz sind nierenförmig und bei 16000 Hz erkennen wir eine Superniere.
+Die Richtcharakteristik liegt je nach Frequenz zwischen breiter Niere, normaler Niere und Superniere. 
+Die Richtcharakteristiken bei 125 Hz hat die Form einer breiten Niere und die Charakteristiken von 250 Hz bis 4000 Hz sind allgemein nierenförmig.
+Bei 8000 Hz ist nach wie vor eine Nierencharakteristik erkennbar, jedoch mit wenigen Unregelmäßigkeiten.
+Bei 16000 Hz erkennen wir eine Superniere.
 Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \footnote{\url{https://www.neumann.com/assets/diagrams/s180_diagrams.htm}} des Herstellers Neumann können wir keine deutlichen Unterschiede erkennen.
 \files{main.m}
 
@@ -195,11 +198,11 @@ Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \fo
 \begin{wrapfigure}{L}{0.5\textwidth}
     \centering
     \includegraphics[width=0.95\linewidth]{Figures/Buendelungsgrad}
-    \captionof{figure}{Bündelungsgrad des Neumann KM184 in Abhängigkeit der Frequenz}
+    \captionof{figure}{Bündelungsgrad des KM184 in Abhängigkeit der Frequenz}
     \label{fig:buendel}
 \end{wrapfigure}
-Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung \ref{fig:buendel} dargestellt.
-Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad 3, eine Breite Niere den Bündelungsgrad 1,89 und eine Superniere den Bündelungsgrad 3,73.
+Der frequenzabhängige Bündelungsgrad des KM184 ist in Abbildung \ref{fig:buendel} dargestellt.
+Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad 3, eine breite Niere den Bündelungsgrad 1,89 und eine Superniere den Bündelungsgrad 3,73.
 Demnach nähert sich der mit der Frequenz moderat steigende Bündelungsgrad des KM184 zwischen 100 Hz und ca. 5000 Hz zunehmend dem einer Niere an.
 Dann kommt es zu einem Einbruch zwischen ca. 6000 Hz und 10000 Hz, wo der Bündelungsgrad bis auf einen für eine breite Niere typischen Wert abfällt. 
 Für höhere Frequenzen steigt $\gamma$ nochmal stark an und erreicht  Super- und Hypernierentypische Werte.
