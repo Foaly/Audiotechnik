@@ -177,6 +177,9 @@ for i= 1:size(KM184_p,1)
     gamma(i) = num/denom;
 end
 
+% directivity measure
+loggamma = 10*log10(gamma);
+
 % plot frequency dependant directivity factor
 figure;
 semilogx(freqs,gamma);
@@ -184,6 +187,14 @@ xlabel('Frequenz in Hz');
 ylabel('Bündelungsgrad');
 xlim([freqs(1) freqs(end)]);
 print -depsc Buendelungsgrad
+
+% plot frequency dependant directivity index
+figure;
+semilogx(freqs,loggamma);
+xlabel('Frequenz in Hz');
+ylabel('Bündelungsmaß');
+xlim([freqs(1) freqs(end)]);
+print -depsc Buendelungsmass
 
 
 
