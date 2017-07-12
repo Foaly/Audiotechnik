@@ -75,13 +75,29 @@ Letztere liefert wiederum eine gleichmäßig geglättete Kurve für eine Darstel
         \caption{SM58}
         \includegraphics[width=0.95\linewidth]{Figures/sm58_0_movmean}
     \end{subfigure}
-    \caption{Unterschied des normalen und geglätteten Frequenzgangs bei frontalem Schalleinfall des KM120 und SM58}
+    \caption{Normalen und geglätteter Frequenzgang bei frontalem Schalleinfall des KM120 und SM58}
     \label{fig:freq_movmean}
 \end{figure}
 
 Wie erwartet führt die Glättung zu einer weicheren Kurve. 
-Vergleichen wir unsere Darstellung der Frequenzgänge mit denen auf den Websites des Herstellers Neumann \footnote{\url{https://www.neumann.com/assets/diagrams/km100_diagrams.htm}} und des Herstellers Shure \footnote{\url{https://www.shure.de/produkte/mikrofone/sm58}} fällt auf, dass die Frequenzgänge auf den Websites  um einiges stärker geglättet sind.
+Vergleichen wir unsere Darstellung der Frequenzgänge mit denen auf den Webseiten der Hersteller (siehe Abbildung \ref{fig:freq_web}) fällt auf, dass die Frequenzgänge der Hersteller um einiges stärker geglättet sind.
 \files{main.m, MovMean.m}
+
+\begin{figure}[bth]
+    \centering
+    \begin{subfigure}{.65\textwidth}
+        \centering
+        \caption{KM120 \cite{KM120}}
+        \includegraphics[height=2.5cm]{Figures/km120_web.png}
+    \end{subfigure}%
+    \begin{subfigure}{.35\textwidth}
+        \centering
+        \caption{SM58 \cite{SM58}}
+        \includegraphics[height=2.5cm]{Figures/sm58_web.png}
+    \end{subfigure}
+    \caption{Frequenzgänge der Hersteller des KM120 und SM58}
+    \label{fig:freq_web}
+\end{figure}
 
 
 \subsection{\texttt{KM120} und \texttt{SM58} für alle Einfallsrichtungen}
@@ -89,6 +105,7 @@ Vergleichen wir unsere Darstellung der Frequenzgänge mit denen auf den Websites
 Die im Aufgabenteil \ref{subsec:a} extrahierten Informationen zum frontalen Schalleinfall werden nun um die beiden Einfallsrichtungen bei 90° und 180° erweitert.
 In diesem Fall kommen die in Aufgabe \ref{subsec:a} zwischengespeicherten Offsets für die Normierung der Schalldruckpegel zum Einsatz, damit die Schalldruckpegel für alle Einfallswinkel den gleichen Referenzwert haben.
 Die Frequenzen der neu extrahierten Informationen werden ebenfalls mit einer Fenstergröße von drei geglättet und sind gemeinsam mit dem geglätteten Frontalschalleinfall aus Aufgabenteil \ref{subsec:b} in Abbildung \ref{fig:freq_all} dargestellt.
+Im folgenden werden die Unterschiede der Frequenzgänge genauer diskutiert. 
 
 Die 0° Frequenzgänge des KM120 und SM58 Mikrofons unterscheiden sich insofern, dass die Empfindlichkeit des SM58 Mikrofons bei hohen Frequenzen ansteigt und die des KM120 Mikrofons näherungsweise konstant bleibt.
 Dies lässt sich mit der Tatsache erklären, dass beide Mikrofone Druckgradientenempfänger sind, was zunächst zu einer mit der Frequenz ansteigenden Empfindlichkeit führt.
@@ -119,7 +136,6 @@ Das starke Absinken entspricht dem Verhalten einer idealen Niere, bei hohen und 
 \end{figure}
 
 
-\newpage
 \subsection{Richtcharakteristik des \texttt{KM184}}
 \label{subsec:d}
 Die frequenzabhängigen Richtcharakteristiken des Neumann KM184 sind in den Abbildungen \ref{fig:Polar_sep} und \ref{fig:Polar_allfreqs} zu sehen.
@@ -127,7 +143,7 @@ Die Richtcharakteristik liegt je nach Frequenz zwischen breiter Niere, normaler 
 Die Richtcharakteristiken bei 125 Hz hat die Form einer breiten Niere und die Charakteristiken von 250 Hz bis 4000 Hz sind allgemein nierenförmig.
 Bei 8000 Hz ist nach wie vor eine Nierencharakteristik erkennbar, jedoch mit wenigen Unregelmäßigkeiten.
 Bei 16000 Hz erkennen wir eine Superniere.
-Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \footnote{\url{https://www.neumann.com/assets/diagrams/s180_diagrams.htm}} des Herstellers Neumann können wir keine deutlichen Unterschiede erkennen.
+Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite des Herstellers \cite{KM184} können wir keine deutlichen Unterschiede erkennen.
 \files{main.m}
 
 \begin{figure}[bth]
@@ -187,8 +203,10 @@ Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \fo
 
 \begin{figure}[bth]
     \centering
-    \includegraphics[width=\linewidth]{Figures/KM184_allfreqs}
-    \captionof{figure}{Zusammengefasste Richtcharakteristik des KM184}
+    \vspace{-1em}
+    \includegraphics[width=0.9\linewidth]{Figures/KM184_allfreqs}
+    \vspace{-3em}
+    \caption{Zusammengefasste Richtcharakteristik des KM184}
     \label{fig:Polar_allfreqs}
 \end{figure}
 
@@ -196,7 +214,7 @@ Beim Vergleich mit den frequenzabhängigen Charakteristiken auf der Webseite \fo
 \subsection{Bündelungsgrad und Bündelungsmaß}
 \label{subsec:e}
 
-Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung \ref{fig:buendel} dargestellt. 
+Der frequenzabhängige Bündelungsgrad des Neumann KM184 ist in Abbildung \ref{fig:buendelg} dargestellt. 
 Laut dem Handbuch der Audiotechnik \cite{Weinzierl08} hat eine Niere gemäß der Berechnung mithilfe der idealisierten Richtcharakteristik $A + B \mathrm{cos}(\theta)$ den Bündelungsgrad $\gamma = 3$, eine Breite Niere den Bündelungsgrad $\gamma = 1,89$ und eine Superniere den Bündelungsgrad $\gamma = 3,73$.
 Demnach nähert sich der mit der Frequenz moderat steigende Bündelungsgrad des KM184 zwischen 100 Hz und ca. 5000 Hz zunehmend dem einer Niere an.
 Dann kommt es zu einem Einbruch zwischen ca. 6000 Hz und 10000 Hz, wo der Bündelungsgrad bis auf einen für eine breite Niere typischen Wert abfällt. 
@@ -205,17 +223,21 @@ Selbiges Verhalten lässt sich auch am Bündelungsmaß ablesen, das sich mittels
 und in Abbildung \ref{fig:buendelm} dargestellt ist.
 \files{main.m}
 
+
 \begin{figure}[bth]
     \centering
-    \includegraphics[width=0.7\textwidth]{Figures/Buendelungsgrad}
-    \captionof{figure}{Bündelungsgrad des Neumann KM184 in Abhängigkeit der Frequenz}
+    \begin{subfigure}{.95\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{Figures/Buendelungsgrad}
+        \caption{Bündelungsgrad}
+        \label{fig:buendelg}
+    \end{subfigure}
+    \begin{subfigure}{.95\textwidth}
+        \centering
+        \includegraphics[width=0.8\linewidth]{Figures/Buendelungsmass}
+        \caption{Bündelungsmaß}
+        \label{fig:buendelm}
+    \end{subfigure}
+    \caption{Bündelungsgrad und Bündelungsmaß des KM184 in Abhängigkeit der Frequenz}
     \label{fig:buendel}
 \end{figure}
-
-\begin{figure}[bth]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Figures/Buendelungsmass}
-    \captionof{figure}{Bündelungsmaß des Neumann KM184 in Abhängigkeit der Frequenz}
-    \label{fig:buendelm}
-\end{figure}
-
