@@ -1,0 +1,53 @@
+\newcommand{\files}[1]{
+    \hfill
+    \mbox{
+        $\hookrightarrow$
+        \texttt{#1}
+    }
+}
+
+\section{Lautsprecher}
+\label{sec:1}
+\blindtext
+
+\def\arraystretch{1.3}
+\begin{table}[h]
+    \centering
+    \caption{Eine Tabelle}
+    \label{tab:mics}
+    \begin{tabular}{l l l l l}
+        Hersteller & Typ & Akustische Arbeitsweise & Richtcharakteristik & Einfallsrichtung \\
+        \hline
+        Shure & \texttt{SM58} & Druckgradienten-/Schnelleempfänger & Niere & 0°, 90°, 180° \\
+    \end{tabular}
+\end{table}
+
+
+\subsection{Untersektion}
+\label{subsec:a}
+\blindtext
+
+\begin{figure}[bth]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{KM120}
+        \includegraphics[width=0.95\linewidth]{tu.png}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \caption{SM58}
+        \includegraphics[width=0.95\linewidth]{tu_red.png}
+    \end{subfigure}
+    \caption{Eine Abbildung}
+    \label{fig:freq_0}
+\end{figure}
+
+
+\subsection{Untersektion}
+\label{subsec:b}
+\blindtext
+
+
+\subsection{Untersektion}
+\label{subsec:c}
