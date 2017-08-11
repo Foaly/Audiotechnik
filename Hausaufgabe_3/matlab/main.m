@@ -23,13 +23,23 @@ clc;
 
 %%%%%%%%%%%%%%%
 %%  Aufgabe A)
-
 load('Pegel_Cello.mat');
-SPL_min = min(pegel_i_cello_p(:));
-SPL_norm = pegel_i_cello_p -SPL_min;
-
-
-balloonplot(SPL_norm);
+% third bands to octave bands
+Lp_oct = zeros(91,181,7);
+for i = 1:7
+    Lp_oct(:,:,i) = 10*log10( 10.^(pegel_i_cello_p(:,:,i*3-2)./10)+ ...
+                               10.^(pegel_i_cello_p(:,:,i*3-1)./10)+ ...
+                               10.^(pegel_i_cello_p(:,:,i*3)./10)   );
+end
+% set minimum level value to 20 dB
+Lp_min = min(Lp_oct(:));
+Lp_change = 20 -Lp_min;
+Lp_oct_norm = Lp_oct +Lp_change;
+% do balloonplots
+freqs = [125,250,500,1000,2000,4000,8000];
+for i = 1:7
+    balloonplot(Lp_oct_norm, freqs(i), i);
+end
 
 %%  Aufgabe B)
 
@@ -39,7 +49,7 @@ freqs = linspace(0,24000,16385);
 [value, ix] = min(abs(freqs - 1000));
 A7_abs_norm = A7_abs./A7_abs(ix);
 figure;
-loglog(freqs,A7_f_abs);
+loglog(freqs,A7_abs_norm);
 
 
 
