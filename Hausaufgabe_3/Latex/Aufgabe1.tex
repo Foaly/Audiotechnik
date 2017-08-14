@@ -90,31 +90,68 @@ Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, ver
 \blindtext
 
 
-\subsection{Untersektion}
+\subsection{SPH-450TC Treiber}
 \label{subsec:c}
 
-\begin{figure}[bth]
+Die zur Berechnung des Frequenzgangs benötigten Thiele-Small-Parameter wurden dem Datenblatt \cite{SPH-450TC} des SPH-450TC Treibers entnommen.
+
+\begin{itemize}
+  \item Resonanzfrequenz $f_s$ = 20 Hz
+  \item Gesamtgüte $Q_{ts}$ = 0,25
+  \item Äquivalentvolumen $V_{as}$ = 480 l
+\end{itemize}
+
+Mit Hilfe der folgenden Formel (2) aus der Aufgabenstellung wurde die Resonanzkreisfrequenz $\omega_c$ berechnet.
+Wie gefordert wurde für $Q_{ts}$ der Wert $\frac{1}{\sqrt{2}}$ verwendet.
+
+\[
+\omega_c = \frac{Q_{tc}}{Q_{ts}} \cdot \omega_s 
+\]
+
+Die Lösung der Gleichung ergab ein $\omega_c$ von $355.4 \frac{1}{s}$ (56.5 Hz). 
+Mit diesem Ergebnis und den Werten aus dem Datenblatt lässt sich nun das benötigte Gehäusevolumen errechnen.
+Dafür wurde die Formel (3) aus der Aufgabestellung verwendet.
+
+\[
+V_b = \frac{V_{as}} {\left( \frac{\omega_c}{\omega_s} \right) ^{2} - 1}
+\]
+
+Das berechnete Gehäusevolumen  $V_b$ beträgt 68,57 Liter.
+Der resultierende Amplitudenfrequenzgang ist in Abbildung \ref{fig:Normaler_Frequenzgang} zu sehen.
+Die Resonanzfrequenz $f_c$ wurde in der Abbildung mit einem roten Kreis markiert. 
+Die -3 dB Cutoff-Frequenz wurde mit einem roten Sternchen markiert.
+In diesem Fall liegen beide Werte aufeinander.
+
+\begin{figure}[H]
     \centering
+    \includegraphics[width=0.7\textwidth]{Figures/Normaler_Frequenzgang.eps}
+    \caption{Normaler Amplitudenfrequenzgang}
+    \label{fig:Normaler_Frequenzgang}
+\end{figure}%
+
+Anschließend sollten die Gehäusevolumen $V_{b,3}$ und $V_{b,1}$ ermittelt werden, welche zu einer maximalen Überhöhung des Betragfrequenzgangs von 3 dB bzw. 1 dB respektive führt.
+Dies wurde in einem iterativen Prozess umgesetzt.
+Die resultierenden Frequenzgänge sind in Abbildung \ref{fig:Ueberhoehung} zu sehen.
+Wie in der vorhergehenden Abbildung ist die Resonanzfrequenz $f_c$ mit einem roten Kreis und die -3 dB Cutoff-Frequenz mit einem roten Sternchen markiert.
+Der berechnete Wert von $V_{b,3}$ liegt bei 18 Litern mit einer Güte $Q_{ts}$ von 1.32.
+Für $V_{b,1}$ wurde ein Wert von 35 Litern und eine Güte von 0.96 errechnet.
+
+\begin{figure}[H]
+    \centering
+    
     \begin{subfigure}{.49\textwidth}
         \centering
-        \caption{Normal}
-        \includegraphics[width=0.85\linewidth]{Figures/Normaler_Frequenzgang.eps}
-        \label{Normaler_Frequenzgang}
-    \end{subfigure}%
-    \begin{subfigure}{.49\textwidth}
-        \centering
-        \caption{1dB Überhöhung}
         \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_1dB.eps}
+        \caption{1dB Überhöhung}
         \label{Frequenzgang_1dB}
     \end{subfigure}
-
-    \vspace{0.5cm}
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.49\textwidth}
         \centering
-        \caption{3dB Überhöhung}
         \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_3dB.eps}
+        \caption{3dB Überhöhung}
         \label{Frequenzgang_3dB}
     \end{subfigure}
-
-    \caption{Verschiedene Frequenzgänge ?????}
+    
+    \caption{Frequenzgänge mit verschiedenen Überhöhungen}
+    \label{fig:Ueberhoehung}
 \end{figure}
