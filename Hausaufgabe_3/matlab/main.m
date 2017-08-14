@@ -50,40 +50,67 @@ clear variables;
 [A7_fs, A7] = read_spk('A7.SPK');
 
 % normalize to 1000 Hz value
-%freqs = linspace(0,24000,16385);
-%[value, ix] = min(abs(freqs - 1000));
+freqs = linspace(0,24000,16385);
+[value, ix] = min(abs(freqs - 1000));
 A7_abs = abs(A7);
-A7_abs_norm = A7_abs./A7_abs(1000);
-
+normfactor = 1/A7_abs(ix);
+A7_abs_norm = A7_abs.*normfactor;
 % convert to dB values
 A7_db = 20*log10(A7_abs_norm);
-
+% extend spectrum and create impulse response
+A7_ext = [A7 fliplr(conj(A7))];
+A7_ir = ifft(A7_ext);
+% plot impulse response 
+%TODO??
 % plot amplitude spectrum
 figure;
-semilogx(A7_db);
-%xlim([20 300]);
+semilogx(freqs, A7_db);
+xlim([0 20000]);
 grid on;
 hold on;
 xlabel('f [Hz]');
 ylabel('normalisierte Amplitude');
 title('Betragsfrequenzgang Adam A7');
-% create impulse response
-A7_ir = ifft(A7);
-% create some parametric eqs and apply them
-[b1, a1] = peq(A7_fs,150 , -7, 0.5)
-[b2,a2] = peq(A7_fs, 20, 40, 1);
-[b3,a3] = peq(A7_fs, 500, -20,20);
-%A7_ir1 = filter(b1,a1, A7_ir);
-%A7_ir1 = filter(b2,a2, A7_ir1);
- A7_ir1 = filter(b3,a3, A7_ir);
+% create some parametric eqs and apply them to linearize the freq. response
+[b1, a1] = peq(A7_fs,25, 15,1 )
+[b2,a2] = peq(A7_fs,29.5 , 20, 15);
+[b3,a3] = peq(A7_fs, 100, -5,1);
+[b4,a4] = peq(A7_fs, 200, 4,2);
+[b5,a5] = peq(A7_fs, 400, -3,1);
+[b6,a6] = peq(A7_fs, 600, 5,1);
+[b7,a7] = peq(A7_fs, 700, -2,1);
+[b8,a8] = peq(A7_fs, 800, -2,3);
+[b9,a9] = peq(A7_fs, 1000, 2,1);
+[b10,a10] = peq(A7_fs, 1200, -4,1);
+[b11,a11] = peq(A7_fs, 4000, 3,0.5);
+[b12,a12] = peq(A7_fs, 6000, 1,1);
+[b13,a13] = peq(A7_fs, 8500, -3,2);
+
+A7_ir1 = filter(b1,a1, A7_ir);
+A7_ir1 = filter(b2,a2, A7_ir1);
+A7_ir1 = filter(b3,a3, A7_ir1);
+A7_ir1 = filter(b4,a4, A7_ir1);
+A7_ir1 = filter(b5,a5, A7_ir1);
+A7_ir1 = filter(b6,a6, A7_ir1);
+A7_ir1 = filter(b7,a7, A7_ir1);
+A7_ir1 = filter(b8,a8, A7_ir1);
+A7_ir1 = filter(b9,a9, A7_ir1);
+A7_ir1 = filter(b10,a10, A7_ir1);
+A7_ir1 = filter(b11,a11, A7_ir1);
+A7_ir1 = filter(b12,a12, A7_ir1);
+A7_ir1 = filter(b13,a13, A7_ir1);
+%transform new impulse response to spectrum
 A7_1 = fft(A7_ir1);
-% renormalize and replot
-A7_1_abs = abs(A7_1);
-A7_1_abs_norm = A7_1_abs./A7_1_abs(1000);
+% reduce new spectrum, renormalize and replot
+A7_1_red = A7_1(1:16385);
+A7_1_abs = abs(A7_1_red);
+normfactor2 = 1/A7_1_abs(ix);
+A7_1_abs_norm = A7_1_abs.*normfactor2; %change normfactor later when everything is done
 A7_1_db = 20*log10(A7_1_abs_norm);
 
-semilogx(A7_1_db);
-%xlim([20 300]);
+semilogx(freqs, A7_1_db);
+legend('original', 'linearized');
+xlim([0 20000]);
 hold off;
 
 %%  Aufgabe C)
