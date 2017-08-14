@@ -104,6 +104,7 @@ Der Realteil des Ergebnisses liefert uns die Impulsantwort.
 Mithilfe der Funktion \textit{peq.m} können wir verschiedene parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
 Insgesamt haben wir 13 Filter angewendet um auf das in Abbildung \ref{fig:frequenzgangA7_lin} dargestellte Resultat zu kommen.
 Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} zu sehen.
+\files{main.m, read_spk.m, itafread.com, peq.m}
 
 \begin{table}[H]
     \centering
@@ -225,4 +226,5 @@ Dieser Aspekt ist auch verkaufspsychologisch von Vorteil.
 Die kleineren Gehäuse hingegen verstärken einen bestimmten Frequenzbereich in der Nähe der Resonanzfrequenz, für viele Zwecke kann dies ausreichend oder sogar erwünscht sein.
 Beim Einsatz als Subwoofer will man vor allem den Bassbereich lauter wiedergeben und diesen Bereich vom Bereich höherer Frequenzen trennen.
 Der hier analysierte Treiber ist für diesen Effekt allerdings nicht optimal geeignet, weil sein Frequenzgangsmaximum bei zu hohen Frequenzen im Bereich um 100 Hz liegt. 
-Treiber mit niedriger Resonanzfrequenz können hingegen Resonanzüberhöhungen bis in den Subbassbereich liefern. 
+Treiber mit niedriger Resonanzfrequenz können hingegen Resonanzüberhöhungen bis in den Subbassbereich liefern.
+\files{main.m, G.m}
