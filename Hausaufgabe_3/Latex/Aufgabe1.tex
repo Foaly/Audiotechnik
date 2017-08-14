@@ -185,7 +185,7 @@ In diesem Fall liegen beide Werte aufeinander.
     \label{fig:Normaler_Frequenzgang}
 \end{figure}%
 
-Anschließend sollten die Gehäusevolumen $V_{b,3}$ und $V_{b,1}$ ermittelt werden, welche zu einer maximalen Überhöhung des Betragfrequenzgangs von 3 dB bzw. 1 dB respektive führt.
+Anschließend sollten die Gehäusevolumen $V_{b,3}$ und $V_{b,1}$ ermittelt werden, welche zu einer maximalen Überhöhung des Betragfrequenzgangs von 3 dB bzw. 1 dB respektive führen.
 Dies wurde in einem iterativen Prozess umgesetzt.
 Die resultierenden Frequenzgänge sind in Abbildung \ref{fig:Ueberhoehung} zu sehen.
 Wie in der vorhergehenden Abbildung ist die Resonanzfrequenz $f_c$ mit einem roten Kreis und die -3 dB Cutoff-Frequenz mit einem roten Sternchen markiert.
@@ -207,7 +207,19 @@ Für $V_{b,1}$ wurde ein Wert von 35 Litern und eine Güte von 0.96 errechnet.
         \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_3dB.eps}
         \label{Frequenzgang_3dB}
     \end{subfigure}
-    
-    \caption{Frequenzgänge mit verschiedenen Überhöhungen}
+    \caption{Frequenzgänge mit verschiedenen Überhöhungen.\\ 
+    Rote Kreise: Resonanzfrequenz $f_c$. Rote Sterne: -3 dB Cutoff-Frequenz.   }
     \label{fig:Ueberhoehung}
 \end{figure}
+Aus den verschiedenen Gehäusegrößen ergeben sich verschiedene Vor- und Nachteile aus praktischer, nachrichtentechnischer und verkaufspsychologischer Sicht.
+Zunächst sind kleine Gehäuse praktischer, weil sie sich einfacher transportieren lassen und nicht so viel Platz einnehmen, dies kann auch beim Kauf ein ausschlaggebendes Kriterium sein.
+Große Gehäuse wiederum können auf Veranstaltungen einen beeindruckenden optischen Effekt hervorrufen. 
+Die Größe des Gehäuse hat wie bereits erwähnt und in den Abbildungen \ref{fig:Normaler_Frequenzgang} und \ref{fig:Ueberhoehung} dargestellt zudem einen Effekt auf den Frequenzgang. 
+Das große Gehäuse (V = 68,57 l) hat den größten linearen Bereich und keine Überhöhung. 
+Es ist damit aus nachrichtentechnischer Sicht optimal, weil alle Frequenzen oberhalb des Abfalls im tiefen Bereich klar wiedergegeben werden. 
+Zudem hat dieses Gehäuse den schwächsten Abfall hin zu tiefen Frequenzen, insgesamt werden also tiefe Frequenzen außerhalb des linearen Bereichs lauter wiedergegeben als bei den kleineren Gehäusen.
+Dieser Aspekt ist auch verkaufspsychologisch von Vorteil.
+Die kleineren Gehäuse hingegen verstärken einen bestimmten Frequenzbereich in der Nähe der Resonanzfrequenz, für viele Zwecke kann dies ausreichend oder sogar erwünscht sein.
+Beim Einsatz als Subwoofer will man vor allem den Bassbereich lauter wiedergeben und diesen Bereich vom Bereich höherer Frequenzen trennen.
+Der hier analysierte Treiber ist für diesen Effekt allerdings nicht optimal geeignet, weil sein Frequenzgangsmaximum bei zu hohen Frequenzen im Bereich um 100 Hz liegt. 
+Treiber mit niedriger Resonanzfrequenz können hingegen Resonanzüberhöhungen bis in den Subbassbereich liefern. 
