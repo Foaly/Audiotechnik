@@ -75,14 +75,14 @@ Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, ver
 \label{subsec:b}
 Um den Frequenzgang und die passende Abtastfrequenz $f_s$ des Lautsprechers Adam A7 zu erhalten, verwenden wir die Funktion \textit{read\_spk.m}.
 Das Spektrum enthält Informationen über den Frequenzbereich zwischen 1 und 24000 Hz.
-Die obere Grenze entspricht dabei der halben Abtastfrequenz und die Frequenzauflösung bzw. Frequenzschrittweite ist $\Delta f = f_s / N$, wobei N die doppelte Länge des Vektors mit den Information über den gemessenen Frequenzgang ist, also $N = 2 \cdot 16385$.
+Die obere Grenze entspricht dabei der halben Abtastfrequenz und die Frequenzauflösung bzw. Frequenzschrittweite ist $\Delta f = f_s / N$, wobei N die doppelte Länge des Vektors der Informationen über den gemessenen Frequenzgang ist, also $N = 2 \cdot 16385$.
 Für die grafische Darstellung des Betragsfrequenzgangs normieren wir alle Amplitudenwerte auf den Wert bei 1000 Hz.
 Zudem rechnen wir die Werte in Pegelwerte um, was äquivalent zu einer grafischen Logarithmierung der y-Achse ist.
 Dabei entsprechen 0 dB wiederum dem Wert bei 1000 Hz.
 Das Resultat ist in den Abbildungen \ref{fig:frequenzgangA7} und \ref{fig:frequenzgangA7_lin} zu sehen. 
 Man sieht, dass der Lautsprecher bis zu einer Frequenz von ca. 20 kHz vermessen wurde, die Werte danach enthalten keinen Informationsgehalt mehr.\\
 Der theoretische Frequenzgang eines elektrodynamischen Lautsprechers steigt bei tiefen Frequenzen zunächst an bis zur Resonanzfrequenz des Lautsprechers, bei welcher eine Überhöhung zu erkennen ist.
-Dann folgt einer linearer Bereich , der sich bis zur  oberen Grenzfrequenz erstreckt, der Knickfrequenz, ab der der Frequenzgang zu hohen Frequenzen hin abfällt. 
+Dann folgt ein linearer Bereich, der sich bis zur oberen Grenzfrequenz erstreckt, der Knickfrequenz, ab der der Frequenzgang zu hohen Frequenzen hin abfällt. 
 In Fall des Adam A7 liegt die Resonanzfrequenz bei etwa 100 Hz.
 Der für die Knickfrequenz charakteristische Abfall ist nicht zu erkennen, was dafür spricht, dass die Knickfrequenz außerhalb des vermessenen Bereichs liegt.
 Es ist sinnvoll einen Lautsprecher so zu entwickeln, dass sich der lineare Bereich bis zu möglichst hohen Frequenzen erstreckt und die Knickfrequenz außerhalb des hörbaren Bereichs liegt.
@@ -98,7 +98,7 @@ Weiterhin fällt auf, dass der lineare Bereich nur annähernd linear ist und vie
 Als nächstes erweitern wir den gemessenen Frequenzgang um die komplex konjugierte Spiegelung. 
 Dieses Spektrum, welches nun Werte von 0 bis 48000 Hz enthält kann durch inverse Fouriertransformation in den Zeitbereich abgebildet werden.
 Der Realteil des Ergebnisses liefert uns die Impulsantwort.
-Mithilfe der Funtion \textit{peq.m} können wir verschieden parametrische Filter auf die Impulsantwort anwenden und diese danach mittels FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
+Mithilfe der Funtion \textit{peq.m} können wir verschieden parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
 Insgesamt haben wir 13 Filter angewendet um auf das in Abbildung \ref{fig:frequenzgangA7_lin} dargestellte Resultat zu kommen.
 Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} zu sehen.
 
