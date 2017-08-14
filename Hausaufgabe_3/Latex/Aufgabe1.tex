@@ -18,10 +18,11 @@ Für eine anschauliche Darstellung wurden die Werte so normiert, dass der niedri
 Mit steigender Frequenz ist zu erkennen, dass die Schalldruckpegelwerte im allgemeinem abnehmen.
 Darüber hinaus deformiert sich die zunächst sphärische Form des Ballons zu den hohen Frequenzen hin mit hervortretenden bzw. hineinragenden Beulen.
 Daher scheint die Ausbreitung der Schalldruckpegel bei niedrigen Frequenzen nahezu kugelförmig zu sein.
-Bei hohen Frequenzen wird zunehmend die für ein Cello charakteristische Abstrahlrichtung erkennbar - leicht schräg nach oben (orthogonal zu den F-Löchern des Resonanzkörpers) und horizontal in die breite gehend.
+Bei hohen Frequenzen wird zunehmend die für ein Cello charakteristische Abstrahlrichtung erkennbar - leicht schräg nach oben (orthogonal zu den F-Löchern des Resonanzkörpers) und horizontal in die Breite gehend.
 Schallabsorbierende Hindernisse vom Cellisten und dem Cello selbst haben auch Einfluss auf die Ausbreitung des Schalldruckpegel.
 So ist über alle Frequenzen hinweg ein Abfall des Schalldruckpegel nach hinten, im Schatten des Cellisten, erkennbar.
-Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, vermutlich durch die spielende Hand und den Bogen verursacht, vermuten.
+Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, vermutlich durch die spielende Hand mit Arm und den Bogen verursacht, vermuten.
+\files{main.m, balloonplot.m}
 
 
 \begin{figure}[h!]
@@ -81,7 +82,7 @@ Die obere Grenze entspricht dabei der halben Abtastfrequenz und die Frequenzaufl
 Für die grafische Darstellung des Betragsfrequenzgangs normieren wir alle Amplitudenwerte auf den Wert bei 1000 Hz.
 Zudem rechnen wir die Werte in Pegelwerte um, was äquivalent zu einer grafischen Logarithmierung der y-Achse ist.
 Dabei entsprechen 0 dB wiederum dem Wert bei 1000 Hz.
-Das Resultat ist in den Abbildungen \ref{fig:frequenzgangA7} und \ref{fig:frequenzgangA7_lin} zu sehen. 
+Das Resultat ist in den Abbildungen \ref{fig:frequenzgangA7} und \ref{fig:frequenzgangA7_lin} dargestellt. 
 In Abbildung \ref{fig:frequenzgangA7} ist zu sehen, dass der Lautsprecher bis zu einer Frequenz von ca. 20 kHz vermessen wurde, die Werte danach enthalten keinen Informationsgehalt mehr.\\
 Der theoretische Frequenzgang eines elektrodynamischen Lautsprechers steigt bei tiefen Frequenzen zunächst an bis zur Resonanzfrequenz des Lautsprechers, bei welcher eine Überhöhung zu erkennen ist.
 Dann folgt ein linearer Bereich, der sich bis zur oberen Grenzfrequenz erstreckt, der Knickfrequenz, ab der der Frequenzgang zu hohen Frequenzen hin abfällt. 
@@ -100,7 +101,7 @@ Weiterhin fällt auf, dass der lineare Bereich nur annähernd linear ist und vie
 Als nächstes erweitern wir den gemessenen Frequenzgang um die komplex konjugierte Spiegelung. 
 Dieses Spektrum, welches nun Werte von 0 bis 48000 Hz enthält, kann durch inverse Fouriertransformation in den Zeitbereich abgebildet werden.
 Der Realteil des Ergebnisses liefert uns die Impulsantwort.
-Mithilfe der Funtion \textit{peq.m} können wir verschiedene parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
+Mithilfe der Funktion \textit{peq.m} können wir verschiedene parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
 Insgesamt haben wir 13 Filter angewendet um auf das in Abbildung \ref{fig:frequenzgangA7_lin} dargestellte Resultat zu kommen.
 Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} zu sehen.
 
@@ -196,14 +197,14 @@ Für $V_{b,1}$ wurde ein Wert von 35 Litern und eine Güte von 0.96 errechnet.
     
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_1dB.eps}
         \caption{1dB Überhöhung}
+        \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_1dB.eps}
         \label{Frequenzgang_1dB}
     \end{subfigure}
     \begin{subfigure}{.49\textwidth}
         \centering
-        \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_3dB.eps}
         \caption{3dB Überhöhung}
+        \includegraphics[width=0.85\linewidth]{Figures/Frequenzgang_3dB.eps}
         \label{Frequenzgang_3dB}
     \end{subfigure}
     
