@@ -22,7 +22,7 @@ So ist über alle Frequenzen hinweg ein Abfall des Schalldruckpegel nach hinten,
 Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, vermutlich durch die spielenden Hand und den Bogen verursacht, vermuten.
 
 
-\begin{figure}[bth]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -87,19 +87,22 @@ In Fall des Adam A7 liegt die Resonanzfrequenz bei etwa 100 Hz.
 Der für die Knickfrequenz charakteristische Abfall ist nicht zu erkennen, was dafür spricht, dass die Knickfrequenz außerhalb des vermessenen Bereichs liegt.
 Es ist sinnvoll einen Lautsprecher so zu entwickeln, dass sich der lineare Bereich bis zu möglichst hohen Frequenzen erstreckt und die Knickfrequenz außerhalb des hörbaren Bereichs liegt.
 Weiterhin fällt auf, dass der lineare Bereich nur annähernd linear ist und viele Störungen enthält.\\
-\begin{figure}[htbp]
+
+\begin{figure}[H]
         \centering
-        \includegraphics[width=0.85\linewidth]{Figures/frequenzgangA7.eps}
+        \includegraphics[width=0.7\textwidth]{Figures/frequenzgangA7.eps}
         \caption{Messdaten für den Frequenzgang des Lautsprechers Adam A7 im Bereich 0 bis 24000 Hz}
         \label{fig:frequenzgangA7}
 \end{figure}
+
 Als nächstes erweitern wir den gemessenen Frequenzgang um die komplex konjugierte Spiegelung. 
 Dieses Spektrum, welches nun Werte von 0 bis 48000 Hz enthält kann durch inverse Fouriertransformation in den Zeitbereich abgebildet werden.
 Der Realteil des Ergebnisses liefert uns die Impulsantwort.
 Mithilfe der Funtion \textit{peq.m} können wir verschieden parametrische Filter auf die Impulsantwort anwenden und diese danach mittels FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
 Insgesamt haben wir 13 Filter angewendet um auf das in Abbildung \ref{fig:frequenzgangA7_lin} dargestellte Resultat zu kommen.
 Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} zu sehen.
-\begin{table}[h]
+
+\begin{table}[H]
     \centering
     \caption{Filterparameter}
     \label{tab:filterparameter}
@@ -123,9 +126,10 @@ Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} z
         \hline
     \end{tabular}
 \end{table}
-\begin{figure}[htbp]
+
+\begin{figure}[H]
         \centering
-        \includegraphics[width=0.85\linewidth]{Figures/frequenzgangA7_lin.eps}
+        \includegraphics[width=0.7\textwidth]{Figures/frequenzgangA7_lin.eps}
         \caption{Linearisierter und Originalbetragsfrequenzgang für den Bereich 20 Hz bis 20000 Hz}
         \label{fig:frequenzgangA7_lin}
 \end{figure}
