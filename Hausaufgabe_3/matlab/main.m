@@ -65,12 +65,13 @@ A7_ir = ifft(A7_ext);
 % plot amplitude spectrum
 figure;
 semilogx(freqs, A7_db);
-xlim([0 20000]);
+xlim([0 24000]);
+ylim([-200 10]);
 grid on;
-hold on;
 xlabel('f [Hz]');
-ylabel('normalisierte Amplitude');
+ylabel('Amplitude [dB]');
 title('Betragsfrequenzgang Adam A7');
+print('frequenzgangA7', '-depsc');
 % create some parametric eqs and apply them to linearize the freq. response
 [b1, a1] = peq(A7_fs,25, 15,1 )
 [b2,a2] = peq(A7_fs,29.5 , 20, 15);
@@ -105,13 +106,22 @@ A7_1 = fft(A7_ir1);
 A7_1_red = A7_1(1:16385);
 A7_1_abs = abs(A7_1_red);
 normfactor2 = 1/A7_1_abs(ix);
-A7_1_abs_norm = A7_1_abs.*normfactor2; %change normfactor later when everything is done
+A7_1_abs_norm = A7_1_abs.*normfactor2; 
 A7_1_db = 20*log10(A7_1_abs_norm);
-
+figure;
+semilogx(freqs, A7_db);
+hold on;
 semilogx(freqs, A7_1_db);
-legend('original', 'linearized');
-xlim([0 20000]);
+legend('original', 'linearisiert','Location', 'southeast');
+xlim([20 20000]);
+ylim([-30 5]);
+xlabel('f [Hz]');
+grid on;
+ylabel('Amplitude [dB]');
+title('Betragsfrequenzgang Adam A7');
+print('frequenzgangA7_lin', '-depsc');
 hold off;
+
 
 %%  Aufgabe C)
 close all;
