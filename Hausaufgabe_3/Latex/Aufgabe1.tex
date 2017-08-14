@@ -19,7 +19,7 @@ Daher scheint die Ausbreitung der Schalldruckpegel bei niedrigen Frequenzen nahe
 Bei hohen Frequenzen wird zunehmend die für ein Cello charakteristische Abstrahlrichtung erkennbar - leicht schräg nach oben (orthogonal zu den F-Löchern des Resonanzkörpers) und horizontal in die breite gehend.
 Schallabsorbierende Hindernisse vom Cellisten und dem Cello selbst haben auch Einfluss auf die Ausbreitung des Schalldruckpegel.
 So ist über alle Frequenzen hinweg ein Abfall des Schalldruckpegel nach hinten, im Schatten des Cellisten, erkennbar.
-Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, vermutlich durch die spielenden Hand und den Bogen verursacht, vermuten.
+Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, vermutlich durch die spielende Hand und den Bogen verursacht, vermuten.
 
 
 \begin{figure}[H]
@@ -75,12 +75,12 @@ Bei hohen Frequenzen mit kurzer Wellenlänge lässt sich eine kleine Lücke, ver
 \label{subsec:b}
 Um den Frequenzgang und die passende Abtastfrequenz $f_s$ des Lautsprechers Adam A7 zu erhalten, verwenden wir die Funktion \textit{read\_spk.m}.
 Das Spektrum enthält Informationen über den Frequenzbereich zwischen 1 und 24000 Hz.
-Die obere Grenze entspricht dabei der halben Abtastfrequenz und die Frequenzauflösung bzw. Frequenzschrittweite ist $\Delta f = f_s / N$, wobei N die doppelte Länge des Vektors der Informationen über den gemessenen Frequenzgang ist, also $N = 2 \cdot 16385$.
+Die obere Grenze entspricht dabei der halben Abtastfrequenz und die Frequenzauflösung bzw. Frequenzschrittweite ist $\Delta f = f_s / N$, wobei N die doppelte Länge des Vektors mit Informationen über den gemessenen Frequenzgang ist, also $N = 2 \cdot 16385$.
 Für die grafische Darstellung des Betragsfrequenzgangs normieren wir alle Amplitudenwerte auf den Wert bei 1000 Hz.
 Zudem rechnen wir die Werte in Pegelwerte um, was äquivalent zu einer grafischen Logarithmierung der y-Achse ist.
 Dabei entsprechen 0 dB wiederum dem Wert bei 1000 Hz.
 Das Resultat ist in den Abbildungen \ref{fig:frequenzgangA7} und \ref{fig:frequenzgangA7_lin} zu sehen. 
-Man sieht, dass der Lautsprecher bis zu einer Frequenz von ca. 20 kHz vermessen wurde, die Werte danach enthalten keinen Informationsgehalt mehr.\\
+In Abbildung \ref{fig:frequenzgangA7} ist zu sehen, dass der Lautsprecher bis zu einer Frequenz von ca. 20 kHz vermessen wurde, die Werte danach enthalten keinen Informationsgehalt mehr.\\
 Der theoretische Frequenzgang eines elektrodynamischen Lautsprechers steigt bei tiefen Frequenzen zunächst an bis zur Resonanzfrequenz des Lautsprechers, bei welcher eine Überhöhung zu erkennen ist.
 Dann folgt ein linearer Bereich, der sich bis zur oberen Grenzfrequenz erstreckt, der Knickfrequenz, ab der der Frequenzgang zu hohen Frequenzen hin abfällt. 
 In Fall des Adam A7 liegt die Resonanzfrequenz bei etwa 100 Hz.
@@ -96,9 +96,9 @@ Weiterhin fällt auf, dass der lineare Bereich nur annähernd linear ist und vie
 \end{figure}
 
 Als nächstes erweitern wir den gemessenen Frequenzgang um die komplex konjugierte Spiegelung. 
-Dieses Spektrum, welches nun Werte von 0 bis 48000 Hz enthält kann durch inverse Fouriertransformation in den Zeitbereich abgebildet werden.
+Dieses Spektrum, welches nun Werte von 0 bis 48000 Hz enthält, kann durch inverse Fouriertransformation in den Zeitbereich abgebildet werden.
 Der Realteil des Ergebnisses liefert uns die Impulsantwort.
-Mithilfe der Funtion \textit{peq.m} können wir verschieden parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
+Mithilfe der Funtion \textit{peq.m} können wir verschiedene parametrische Filter auf die Impulsantwort anwenden und diese danach mittels einer FFT wieder in den Frequenzbereich transformieren, um den Betragsfrequenzgang des Lautsprechers zu linearisieren.
 Insgesamt haben wir 13 Filter angewendet um auf das in Abbildung \ref{fig:frequenzgangA7_lin} dargestellte Resultat zu kommen.
 Die Parameter der verwendeten Filter sind in Tabelle \ref{tab:filterparameter} zu sehen.
 
@@ -148,23 +148,30 @@ Die zur Berechnung des Frequenzgangs benötigten Thiele-Small-Parameter wurden d
   \item Äquivalentvolumen $V_{as}$ = 480 l
 \end{itemize}
 
-Mit Hilfe der folgenden Formel (2) aus der Aufgabenstellung wurde die Resonanzkreisfrequenz $\omega_c$ berechnet.
+Mit Hilfe von Formel \ref{eq:f1} wurde die Resonanzkreisfrequenz $\omega_c$ berechnet.
 Wie gefordert wurde für $Q_{ts}$ der Wert $\frac{1}{\sqrt{2}}$ verwendet.
 
-\[
+\begin{align}
+\label{eq:f1}
 \omega_c = \frac{Q_{tc}}{Q_{ts}} \cdot \omega_s 
-\]
+\end{align}
 
-Die Lösung der Gleichung ergab ein $\omega_c$ von $355.4 \frac{1}{s}$ (56.5 Hz). 
+Die Lösung der Gleichung ergab ein $\omega_c$ von $355.4 \frac{1}{s}$ ($f_c = 56.5$ Hz). 
 Mit diesem Ergebnis und den Werten aus dem Datenblatt lässt sich nun das benötigte Gehäusevolumen errechnen.
 Dafür wurde die Formel (3) aus der Aufgabestellung verwendet.
 
-\[
+\begin{align}
+\label{eq:f2}
 V_b = \frac{V_{as}} {\left( \frac{\omega_c}{\omega_s} \right) ^{2} - 1}
-\]
+\end{align}
 
 Das berechnete Gehäusevolumen  $V_b$ beträgt 68,57 Liter.
-Der resultierende Amplitudenfrequenzgang ist in Abbildung \ref{fig:Normaler_Frequenzgang} zu sehen.
+Der mittels Formel \ref{eq:f3} berechnete modellhafte Amplitudenfrequenzgang ist in Abbildung \ref{fig:Normaler_Frequenzgang} zu sehen.
+
+\begin{align}
+\label{eq:f3}
+G(\omega) = \frac{(\frac{\omega}{\omega_c})^2}{(\frac{\omega}{\omega_c})^2 - j \frac{1}{Q_{tc}}\frac{\omega}{\omega_c}-1}
+\end{align}
 Die Resonanzfrequenz $f_c$ wurde in der Abbildung mit einem roten Kreis markiert. 
 Die -3 dB Cutoff-Frequenz wurde mit einem roten Sternchen markiert.
 In diesem Fall liegen beide Werte aufeinander.
