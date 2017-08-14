@@ -11,11 +11,11 @@ s.EdgeColor = 'flat';
 xlabel('L_{p,x} [dB]');
 ylabel('L_{p,y} [dB]');
 zlabel('L_{p,z} [dB]');
-title(['Abstrahlcharakteristik Cello ', num2str(Hz), 'Hz']);
+%title(['Abstrahlcharakteristik Cello ', num2str(Hz), 'Hz']);
 Lp_max = max(input(:));
 xlim([-Lp_max Lp_max]);
 ylim([-Lp_max Lp_max]);
 zlim([-Lp_max Lp_max]);
 %save plot
-print([num2str(Hz),' Hz'], '-depsc');
+print([num2str(Hz),'Hz'], '-depsc');
 end

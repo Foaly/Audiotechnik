@@ -41,18 +41,23 @@ for i = 1:7
    balloonplot(Lp_oct_norm, freqs(i), i);
 end
 
+
 %%  Aufgabe B)
 close all;
 clear variables;
+
 % read data
 [A7_fs, A7] = read_spk('A7.SPK');
+
 % normalize to 1000 Hz value
 %freqs = linspace(0,24000,16385);
 %[value, ix] = min(abs(freqs - 1000));
 A7_abs = abs(A7);
 A7_abs_norm = A7_abs./A7_abs(1000);
+
 % convert to dB values
 A7_db = 20*log10(A7_abs_norm);
+
 % plot amplitude spectrum
 figure;
 semilogx(A7_db);
